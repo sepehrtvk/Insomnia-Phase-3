@@ -119,6 +119,7 @@ public class RightSidePanel extends JPanel {
         add(rightSideTabbedPane, BorderLayout.CENTER);
 
         messageBody = new JPanel();
+        messageBody.setForeground(Color.WHITE);
         messageBody.setBackground(Color.DARK_GRAY);
         messageBody.setLayout(new BorderLayout(0, 0));
         rightSideTabbedPane.addTab("      Message body      ", null, messageBody, null);

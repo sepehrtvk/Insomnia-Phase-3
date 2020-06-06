@@ -1,6 +1,4 @@
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
@@ -13,7 +11,6 @@ import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Vector;
 
 /**
  * The Request class used to send a HTTP request using HTTPUrlConnection in java.
@@ -215,7 +212,6 @@ public class Request {
             setJson(urlConnection);
             responseCode = urlConnection.getResponseCode();
             responseMessage = urlConnection.getResponseMessage();
-            //System.out.println(responseCode + " " + responseMessage);
             Controller.dataNumberStatus.setText(" " + responseCode + " " + responseMessage);
 
             if (responseCode == 200) Controller.dataNumberStatus.setBackground(Color.GREEN);
@@ -239,16 +235,14 @@ public class Request {
                         response += temp + "\n";
                         temp = bufferedReader.readLine();
                     }
-                    if (Controller.messageBody.getComponents().length == 1) Controller.messageBody.removeAll();
+                    if (Controller.messageBody.getComponents().length == 2) Controller.messageBody.remove(1);
 
-                    System.out.println(response);
                     JTextArea responseField = new JTextArea(response);
                     responseField.setLineWrap(true);
                     JScrollPane scrollPane = new JScrollPane(responseField);
-                    responseField.setBackground(Color.DARK_GRAY);
+                    responseField.setBackground(Color.lightGray);
                     responseField.setEditable(false);
                     Controller.messageBody.add(scrollPane);
-                    
 
                     Controller.dataSizeStatus.setText(response.length() / 1000 + "." + response.length() % 1000 + " KB");
 
@@ -314,11 +308,10 @@ public class Request {
             Controller.headerInRightSide.remove(2);
         }
         JTextArea jTextArea2 = new JTextArea();
-        jTextArea2.setForeground(Color.WHITE);
         jTextArea2.setLineWrap(true);
         jTextArea2.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(jTextArea2);
-        jTextArea2.setBackground(Color.DARK_GRAY);
+        jTextArea2.setBackground(Color.lightGray);
 
         int i = 0;
         while (urlConnection.getHeaderField(i) != null) {
