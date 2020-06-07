@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -32,19 +33,30 @@ public class Main {
 
 /**************/
 
+        ArrayList<String> argees = new ArrayList<>();
         Controller.sendbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String[] args = new String[4];
-                args[0] = Controller.url.getText();
-                args[1]="-M";
-                args[2]=Controller.methodsComboBox.getSelectedItem().toString();
-                args[3]="-i";
-                System.out.println(args[0]);
-                System.out.println(args[1]);
-                System.out.println(args[2]);
-                Request request = new Request(args);
+                argees.add(Controller.url.getText());
+                argees.add("-M");
+                argees.add(Controller.methodsComboBox.getSelectedItem().toString());
+                argees.add("-i");
+                String[] arr = new String[argees.size()];
+                arr = argees.toArray(arr);
+
+                Request request = new Request(arr);
                 request.send();
+            }
+        });
+        Controller.savebtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                argees.add("-O");
+                String[] arr = new String[argees.size()];
+                arr = argees.toArray(arr);
+                Request request = new Request(arr);
+                request.send();
+
             }
         });
 

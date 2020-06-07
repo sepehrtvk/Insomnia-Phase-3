@@ -5,6 +5,7 @@ public class Controller {
     public static CenterSidePanel centerSidePanel;
     public static JTextField url;
     public static JButton sendbtn;
+    public static JButton savebtn;
     public static JComboBox methodsComboBox;
 
 
