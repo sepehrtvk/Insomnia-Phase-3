@@ -38,9 +38,6 @@ public class RightSidePanel extends JPanel {
     //header panel.
     private JPanel headerInRightSide;
 
-    //headers.
-    private JTable headerTable;
-
     //copy button.
     private JButton copyToClipboardBtn;
 

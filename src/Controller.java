@@ -23,7 +23,6 @@ public class Controller {
     public static JLabel dataSizeStatus;
     public static JPanel messageBody;
     public static JPanel headerInRightSide;
-    public static JComboBox headerRightComboBox;
     public static JTabbedPane bodyTabbedPane;
 
 

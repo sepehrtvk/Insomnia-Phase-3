@@ -83,7 +83,7 @@ public class LeftSidePanel extends JPanel {
             int counter=0;
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                if(counter!=0)return;
+                if(counter!=0){counter=0; return;}
                 System.out.println(list.getSelectedValue());
                 String[] args = new String[3];
                 args[0] = "-fire";
