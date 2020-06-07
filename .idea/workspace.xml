@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="93712844-8c09-498b-befe-d874bcebbb3a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/CenterSidePanel$2$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/CenterSidePanel$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/CenterSidePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/CenterSidePanel$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/CenterSidePanel$MouseActionHeader$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/CenterSidePanel$MouseActionHeader$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/CenterSidePanel$MouseActionHeader$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/CenterSidePanel$MouseActionHeader$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/CenterSidePanel$MouseActionHeader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/CenterSidePanel$MouseActionHeader.class" afterDir="false" />
@@ -12,25 +11,10 @@
       <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/CenterSidePanel$MouseActionQuery$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/CenterSidePanel$MouseActionQuery$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/CenterSidePanel$MouseActionQuery.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/CenterSidePanel$MouseActionQuery.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/CenterSidePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/CenterSidePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI$3$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI$3$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI$3$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI$3$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI$3$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/InsomniaGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/Main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/Request$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/Request$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/Request.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/RightSidePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/RightSidePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/Request$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/Request.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CenterSidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CenterSidePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LeftSidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LeftSidePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Request.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,8 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/InsomniaGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="162" selection-start-line="162" selection-end-line="162" />
+            <state relative-caret-position="166">
+              <caret line="152" column="38" selection-start-line="152" selection-start-column="38" selection-end-line="152" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -68,13 +52,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Request.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="212" column="41" selection-start-line="212" selection-start-column="41" selection-end-line="212" selection-end-column="41" />
+            <state relative-caret-position="323">
+              <caret line="271" column="92" selection-start-line="271" selection-start-column="92" selection-end-line="271" selection-end-column="92" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#14788#14789#0" expanded="true" />
+                <element signature="e#14814#14815#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -101,16 +87,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LeftSidePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="148" column="51" selection-start-line="148" selection-start-column="51" selection-end-line="148" selection-end-column="51" />
+            <state relative-caret-position="-1199">
+              <caret line="65" selection-start-line="65" selection-end-line="65" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6583#6584#0" expanded="true" />
-                <element signature="e#6740#6741#0" expanded="true" />
-                <element signature="e#6903#6904#0" expanded="true" />
+                <element signature="e#5674#5675#0" expanded="true" />
+                <element signature="e#5831#5832#0" expanded="true" />
+                <element signature="e#5994#5995#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -119,8 +105,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RightSidePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1214">
-              <caret line="130" column="30" selection-start-line="130" selection-start-column="30" selection-end-line="130" selection-end-column="30" />
+            <state relative-caret-position="205">
+              <caret line="127" column="72" selection-start-line="127" selection-start-column="65" selection-end-line="127" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,8 +117,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CenterSidePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5220">
-              <caret line="358" column="35" selection-start-line="358" selection-start-column="35" selection-end-line="358" selection-end-column="35" />
+            <state relative-caret-position="264">
+              <caret line="127" selection-start-line="127" selection-end-line="127" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -169,11 +155,11 @@
         <option value="$PROJECT_DIR$/src/InsomniaMenuBar.java" />
         <option value="$PROJECT_DIR$/src/RightSidePanel.java" />
         <option value="$PROJECT_DIR$/src/InsomniaGUI.java" />
-        <option value="$PROJECT_DIR$/src/Request.java" />
         <option value="$PROJECT_DIR$/src/Controller.java" />
-        <option value="$PROJECT_DIR$/src/CenterSidePanel.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/LeftSidePanel.java" />
+        <option value="$PROJECT_DIR$/src/CenterSidePanel.java" />
+        <option value="$PROJECT_DIR$/src/Request.java" />
       </list>
     </option>
   </component>
@@ -267,7 +253,7 @@
       <workItem from="1591457981029" duration="15735000" />
       <workItem from="1591477891777" duration="49000" />
       <workItem from="1591478014460" duration="3249000" />
-      <workItem from="1591510704889" duration="6615000" />
+      <workItem from="1591510704889" duration="7959000" />
     </task>
     <task id="LOCAL-00001" summary="First commit.">
       <created>1589223226529</created>
@@ -500,11 +486,25 @@
       <option name="project" value="LOCAL" />
       <updated>1591479330914</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Add request list reader.">
+      <created>1591530133277</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1591530133277</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Fix list duplicate frame bug.">
+      <created>1591530383499</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1591530383499</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51325000" />
+    <option name="totallyTimeSpent" value="52669000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -519,7 +519,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4993895" visible="true" weight="0.32142857" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4993895" weight="0.32142857" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -529,7 +529,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50061053" side_tool="true" weight="0.32959184" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32959184" />
+      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.32959184" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -545,8 +545,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add data size status." />
-    <MESSAGE value="Add right side panel tabs." />
     <MESSAGE value="Add right side panel name and value." />
     <MESSAGE value="Add copy button." />
     <MESSAGE value="Add right panel methods." />
@@ -570,7 +568,9 @@
     <MESSAGE value="Add mouseListener header and query request." />
     <MESSAGE value="Add JavaDoc." />
     <MESSAGE value="Add header background." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add header background." />
+    <MESSAGE value="Add request list reader." />
+    <MESSAGE value="Fix list duplicate frame bug." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix list duplicate frame bug." />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-13.jdk/Contents/Home/lib/src.zip!/java.desktop/javax/swing/JComponent.java">
@@ -632,26 +632,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CenterSidePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5220">
-          <caret line="358" column="35" selection-start-line="358" selection-start-column="35" selection-end-line="358" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Request.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="212" column="41" selection-start-line="212" selection-start-column="41" selection-end-line="212" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-13.jdk/Contents/Home/lib/src.zip!/java.desktop/java/awt/Window.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="394">
@@ -659,26 +639,6 @@
           <folding>
             <element signature="e#40489#40490#0" expanded="true" />
             <element signature="e#40516#40517#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/InsomniaGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="162" selection-start-line="162" selection-end-line="162" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RightSidePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1214">
-          <caret line="130" column="30" selection-start-line="130" selection-start-column="30" selection-end-line="130" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -695,13 +655,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LeftSidePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="148" column="51" selection-start-line="148" selection-start-column="51" selection-end-line="148" selection-end-column="51" />
+        <state relative-caret-position="-1199">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6583#6584#0" expanded="true" />
-            <element signature="e#6740#6741#0" expanded="true" />
-            <element signature="e#6903#6904#0" expanded="true" />
+            <element signature="e#5674#5675#0" expanded="true" />
+            <element signature="e#5831#5832#0" expanded="true" />
+            <element signature="e#5994#5995#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CenterSidePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="127" selection-start-line="127" selection-end-line="127" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RightSidePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="127" column="72" selection-start-line="127" selection-start-column="65" selection-end-line="127" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/InsomniaGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="152" column="38" selection-start-line="152" selection-start-column="38" selection-end-line="152" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Request.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="271" column="92" selection-start-line="271" selection-start-column="92" selection-end-line="271" selection-end-column="92" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#14788#14789#0" expanded="true" />
+            <element signature="e#14814#14815#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 /**
  * the CenterSidePanel class that extends JPanel , prepares center panel for the header , query , auth , docs and message body.
@@ -122,6 +123,7 @@ public class CenterSidePanel extends JPanel {
         tabbedPane.addTab("      Body      ", bodyPanel);
         tabbedPane.setBackgroundAt(0, Color.GRAY);
         bodyPanel.setLayout(new BorderLayout());
+
 
         //body type.
         bodyTypeComboBox = new JComboBox(new String[]{"Form Data", "JSON", "Binary Data"});
