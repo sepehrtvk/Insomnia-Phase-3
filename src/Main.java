@@ -50,13 +50,14 @@ public class Main {
                 for (int i = 1; i < components.length; i = i + 5) {
                     JTextField key = (JTextField) components[i];
                     JTextField value = (JTextField) components[i + 1];
+                    JCheckBox jCheckBox = (JCheckBox)components[i+2];
+                    if(jCheckBox.isSelected())
                     sb.append(key.getText()+":"+value.getText()+";");
 
                 }
                 String str = sb.toString();
                 sb.deleteCharAt(str.length()-1);
                 argees.add(sb.toString());
-
 
                 String[] arr = new String[argees.size()];
                 arr = argees.toArray(arr);
