@@ -42,22 +42,25 @@ public class Main {
                 argees.add("-M");
                 argees.add(Controller.methodsComboBox.getSelectedItem().toString());
                 argees.add("-i");
-                argees.add("--headers");
-                StringBuilder sb = new StringBuilder();
 
                 Component[] components = Controller.headerPanel.getComponents();
+                JCheckBox jCheckBox = (JCheckBox) components[3];
+                if (jCheckBox.isSelected()) {
+                    argees.add("--headers");
+                    StringBuilder sb = new StringBuilder();
 
-                for (int i = 1; i < components.length; i = i + 5) {
-                    JTextField key = (JTextField) components[i];
-                    JTextField value = (JTextField) components[i + 1];
-                    JCheckBox jCheckBox = (JCheckBox)components[i+2];
-                    if(jCheckBox.isSelected())
-                    sb.append(key.getText()+":"+value.getText()+";");
+                    for (int i = 1; i < components.length; i = i + 5) {
+                        JTextField key = (JTextField) components[i];
+                        JTextField value = (JTextField) components[i + 1];
+                        JCheckBox jCheckBox2 = (JCheckBox) components[i + 2];
+                        if (jCheckBox2.isSelected())
+                            sb.append(key.getText() + ":" + value.getText() + ";");
 
+                    }
+                    String str = sb.toString();
+                    sb.deleteCharAt(str.length() - 1);
+                    argees.add(sb.toString());
                 }
-                String str = sb.toString();
-                sb.deleteCharAt(str.length()-1);
-                argees.add(sb.toString());
 
                 String[] arr = new String[argees.size()];
                 arr = argees.toArray(arr);

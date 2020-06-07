@@ -30,6 +30,10 @@ public class LeftSidePanel extends JPanel {
     //new request button.
     private JButton newRequestBtn;
 
+    private JLabel requestLabel;
+
+    private JList<String> list;
+
     /**
      * this constructor makes the left side panel to manage request lists.
      */
@@ -58,11 +62,11 @@ public class LeftSidePanel extends JPanel {
         filterTextField.setColumns(10);
         add(filterTextField);
 
-        JLabel jLabel = new JLabel("Requests : ");
-        jLabel.setBounds(10, 90, 100, 20);
-        add(jLabel);
+        requestLabel = new JLabel("Requests : ");
+        requestLabel.setBounds(10, 90, 100, 20);
+        add(requestLabel);
         DefaultListModel<String> l1 = new DefaultListModel<>();
-        JList<String> list = new JList<>(l1);
+        list = new JList<>(l1);
         list.setBounds(10, 115, 235, 450);
         list.setBackground(Color.DARK_GRAY);
         File folder = new File("Requests");
@@ -159,5 +163,11 @@ public class LeftSidePanel extends JPanel {
         return newRequestBtn;
     }
 
+    public JList<String> getList() {
+        return list;
+    }
 
+    public JLabel getRequestLabel() {
+        return requestLabel;
+    }
 }
