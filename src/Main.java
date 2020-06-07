@@ -1,5 +1,6 @@
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
@@ -28,7 +29,7 @@ public class Main {
 // If Nimbus is not available, you can set the GUI to another look and feel.
         }
         //show GUI.
-        new InsomniaGUI();
+        InsomniaGUI insomniaGUI = new InsomniaGUI();
 
 
 /**************/
@@ -41,11 +42,28 @@ public class Main {
                 argees.add("-M");
                 argees.add(Controller.methodsComboBox.getSelectedItem().toString());
                 argees.add("-i");
+                argees.add("--headers");
+                StringBuilder sb = new StringBuilder();
+
+                Component[] components = Controller.headerPanel.getComponents();
+
+                for (int i = 1; i < components.length; i = i + 5) {
+                    JTextField key = (JTextField) components[i];
+                    JTextField value = (JTextField) components[i + 1];
+                    sb.append(key.getText()+":"+value.getText()+";");
+
+                }
+                String str = sb.toString();
+                sb.deleteCharAt(str.length()-1);
+                argees.add(sb.toString());
+
+
                 String[] arr = new String[argees.size()];
                 arr = argees.toArray(arr);
-                for(String str : arr){
-                    System.out.println(str);
+                for (String str2 : arr) {
+                    System.out.println(str2);
                 }
+
                 Request request = new Request(arr);
                 request.send();
                 argees.clear();
@@ -55,13 +73,75 @@ public class Main {
         Controller.savebtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                argees.add("-O");
-                String[] arr = new String[argees.size()];
-                arr = argees.toArray(arr);
-                Request request = new Request(arr);
-                request.send();
+                JFrame listFrame = new JFrame("Choose one request : ");
+                listFrame.setLayout(new BorderLayout());
+                listFrame.setBounds(50, 50, 300, 200);
+                JTextArea jTextArea = new JTextArea();
+                jTextArea.setEditable(false);
+
+                File folder = new File("Requests");
+                File[] listOfFiles = folder.listFiles();
+                if (listOfFiles != null) {
+                    for (File file : listOfFiles) {
+                        if (file.isFile() && !file.getName().equals(".DS_Store")) {
+                            jTextArea.append(file.getName() + "\n");
+                        }
+                    }
+                }
+
+                listFrame.add(jTextArea, BorderLayout.CENTER);
+                listFrame.setVisible(true);
+                JButton OKBtn = new JButton("OK");
+                listFrame.add(OKBtn, BorderLayout.SOUTH);
+                JTextField jTextField = new JTextField();
+                listFrame.add(jTextField, BorderLayout.NORTH);
+                OKBtn.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        argees.add(Controller.url.getText());
+                        argees.add("-M");
+                        argees.add(Controller.methodsComboBox.getSelectedItem().toString());
+                        argees.add("-i");
+                        argees.add("-S");
+                        argees.add(jTextField.getText());
+                        String[] arr = new String[argees.size()];
+                        arr = argees.toArray(arr);
+
+
+                        for (String str : arr) {
+                            System.out.println(str);
+                        }
+                        File file = new File("Requests/" + jTextField.getText());
+
+
+                        try {
+                            Request request = new Request(arr);
+                            //write on the file.
+                            FileWriter fr = new FileWriter(file, true);
+                            //input = input.replace(" --save", "");
+                            //input = input.replace(" -S", "");
+                            fr.write(request.toString() + "\n");
+                            //fr.write(input + "\n");
+                            fr.close();
+                        } catch (IOException ee) {
+                            ee.printStackTrace();
+                        }
+                        Controller.leftSidePanel.repaint();
+                        Controller.leftSidePanel.revalidate();
+                        Controller.leftSidePanel.setVisible(true);
+                        insomniaGUI.repaint();
+                        insomniaGUI.revalidate();
+                        insomniaGUI.setVisible(true);
+                        Controller.leftSidePanel.getComponent(3).repaint();
+                        Controller.leftSidePanel.getComponent(3).revalidate();
+                        Controller.leftSidePanel.getComponent(3).setVisible(true);
+                        listFrame.dispose();
+
+                    }
+                });
 
             }
+
         });
 
 //        //get input form args.

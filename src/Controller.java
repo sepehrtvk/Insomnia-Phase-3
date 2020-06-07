@@ -7,7 +7,8 @@ public class Controller {
     public static JButton sendbtn;
     public static JButton savebtn;
     public static JComboBox methodsComboBox;
-
+    public static JPanel headerPanel;
+    public static boolean activeHeader;
 
 
 

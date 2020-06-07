@@ -140,6 +140,18 @@ public class Request {
      * @param urlConnection the HttpURLConnection want to send request with header.
      */
     private void setHeaders(HttpURLConnection urlConnection) {
+
+//        Component[] components = Controller.headerPanel.getComponents();
+//
+//        if (Controller.activeHeader) {
+//            for (int i = 1; i < components.length; i = i + 5) {
+//                System.out.println("aaajajaa");
+//                JTextField key = (JTextField) components[i];
+//                JTextField value = (JTextField) components[i + 1];
+//                urlConnection.setRequestProperty(key.getText(), value.getText());
+//            }
+//        }
+
         if (!headers.equals(""))
             for (String s : headers.split(";")) {
                 String[] h = s.split(":");
@@ -242,10 +254,9 @@ public class Request {
                     JScrollPane scrollPane = new JScrollPane(responseField);
                     responseField.setBackground(Color.lightGray);
                     responseField.setEditable(false);
-                    Controller.bodyTabbedPane.addTab("Raw",scrollPane);
+                    Controller.bodyTabbedPane.addTab("Raw", scrollPane);
 
                     Controller.dataSizeStatus.setText(response.length() / 1000 + "." + response.length() % 1000 + " KB");
-
 
 
                     JEditorPane jep = new JEditorPane();
@@ -260,9 +271,9 @@ public class Request {
                     JScrollPane scrollPane2 = new JScrollPane(jep);
                     if (Controller.messageBody.getComponents().length > 1)
                         Controller.messageBody.remove(1);
-                    Controller.bodyTabbedPane.addTab("Preview",scrollPane2);
+                    Controller.bodyTabbedPane.addTab("Preview", scrollPane2);
 
-                    Controller.bodyTabbedPane.addTab("JSON",new JPanel());
+                    Controller.bodyTabbedPane.addTab("JSON", new JPanel());
 
 
                 } else {
@@ -338,7 +349,7 @@ public class Request {
             jTextArea2.append(urlConnection.getHeaderField(i + 1) + "\n\n");
             i++;
         }
-        ((JButton)Controller.headerInRightSide.getComponent(1)).addActionListener(new ActionListener() {
+        ((JButton) Controller.headerInRightSide.getComponent(1)).addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 StringSelection selection = new StringSelection(jTextArea2.getText());

@@ -4,8 +4,6 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,9 +26,6 @@ public class LeftSidePanel extends JPanel {
 
     //insomnia main button.
     private JButton insomniaBtn;
-
-    //requests list.
-    private JTree requestsTree;
 
     //new request button.
     private JButton newRequestBtn;
@@ -97,9 +92,9 @@ public class LeftSidePanel extends JPanel {
                     Scanner sc = new Scanner(new File("Requests/" + args[1]));
                     int i = 1;
                     while (sc.hasNext()) {
-                        jTextArea.append(i + ": " + sc.nextLine() + "\n");
+                        jTextArea.append(i + ": " + sc.nextLine());
                         i++;
-                        sc.nextLine();
+                        if(sc.hasNext())sc.nextLine();
                     }
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
@@ -121,9 +116,7 @@ public class LeftSidePanel extends JPanel {
                                 sc.nextLine();
                             }
                             sc.nextLine();
-                            String[] arr = sc.nextLine().split("\\s+");
-                            arr[1] = "-i";
-                            Request request = new Request(arr);
+                            Request request = new Request(sc.nextLine().split("\\s+"));
                             request.send();
                         } catch (FileNotFoundException ex) {
                             ex.printStackTrace();
@@ -155,15 +148,6 @@ public class LeftSidePanel extends JPanel {
         return filterTextField;
     }
 
-    /**
-     * get the requests list.
-     *
-     * @return requests list.
-     */
-
-    public JTree getRequestsTree() {
-        return requestsTree;
-    }
 
     /**
      * get the request button.

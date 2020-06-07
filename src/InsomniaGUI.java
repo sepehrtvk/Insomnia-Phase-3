@@ -121,7 +121,6 @@ public class InsomniaGUI extends JFrame {
                 RightSidePanel.getRightSideTabbedPane().setBackground(Color.darkGray);
                 RightSidePanel.getStatusPanel().setBackground(Color.gray);
                 CenterSidePanel.setBackground(Color.darkGray);
-                LeftSidePanel.getRequestsTree().setBackground(Color.darkGray);
                 CenterSidePanel.getAuthPanel().setBackground(Color.darkGray);
                 CenterSidePanel.getDocsPanel().setBackground(Color.darkGray);
                 CenterSidePanel.getHeaderPanel().setBackground(Color.darkGray);
@@ -162,7 +161,6 @@ public class InsomniaGUI extends JFrame {
                 RightSidePanel.getStatusPanel().setBackground(Color.PINK);
                 CenterSidePanel.getUrlPanel().setBackground(Color.pink);
                 CenterSidePanel.setBackground(Color.cyan);
-                LeftSidePanel.getRequestsTree().setBackground(Color.cyan);
                 CenterSidePanel.getAuthPanel().setBackground(Color.cyan);
                 CenterSidePanel.getDocsPanel().setBackground(Color.cyan);
                 CenterSidePanel.getHeaderPanel().setBackground(Color.cyan);
@@ -274,11 +272,9 @@ public class InsomniaGUI extends JFrame {
                 if (tSideBarCounter % 2 == 0) {
                     LeftSidePanel.getFilterTextField().setVisible(false);
                     LeftSidePanel.getNewRequestBtn().setVisible(false);
-                    LeftSidePanel.getRequestsTree().setVisible(false);
                 } else {
                     LeftSidePanel.getFilterTextField().setVisible(true);
                     LeftSidePanel.getNewRequestBtn().setVisible(true);
-                    LeftSidePanel.getRequestsTree().setVisible(true);
                 }
             }
 

@@ -99,6 +99,8 @@ public class CenterSidePanel extends JPanel {
     //counter of header and value.
     private int headerCounter = 2;
 
+    private boolean activeHeader = false;
+
     /**
      * the constructor makes the center panel with it parts.
      */
@@ -245,6 +247,7 @@ public class CenterSidePanel extends JPanel {
         headerPanel = new JPanel();
         headerPanel.setBackground(Color.DARK_GRAY);
         tabbedPane.addTab("    Header    ", headerPanel);
+        Controller.headerPanel=headerPanel;
 
         GridBagLayout gbl_headerPanel = new GridBagLayout();
         headerPanel.setLayout(gbl_headerPanel);
@@ -289,8 +292,16 @@ public class CenterSidePanel extends JPanel {
         gbc.insets = new Insets(0, 0, 5, 5);
         gbc.gridx = 4;
         gbc.gridy = 1;
-
+        activeHeaderCheckBox2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("aqqqqqqq");
+                if(activeHeaderCheckBox2.isSelected())activeHeader = true;
+                System.out.println(activeHeader);
+            }
+        });
         headerPanel.add(activeHeaderCheckBox2, gbc);
+        Controller.activeHeader=activeHeader;
 
         //add delete button.
         deleteHeaderBtn2 = new JButton("☓");
