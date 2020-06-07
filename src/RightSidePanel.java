@@ -35,9 +35,6 @@ public class RightSidePanel extends JPanel {
     //message body panel.
     private JPanel messageBody;
 
-    //header mode combobox.
-    private JComboBox headerRightComboBox;
-
     //header panel.
     private JPanel headerInRightSide;
 
@@ -125,10 +122,15 @@ public class RightSidePanel extends JPanel {
         rightSideTabbedPane.addTab("      Message body      ", null, messageBody, null);
         Controller.messageBody = messageBody;
 
-        headerRightComboBox = new JComboBox(new String[]{"Raw", "Preview", "JSON"});
         rightSideTabbedPane.setBackgroundAt(0, Color.GRAY);
-        messageBody.add(headerRightComboBox, BorderLayout.NORTH);
-        Controller.headerRightComboBox = headerRightComboBox;
+        JTabbedPane bodyTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        bodyTabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+        bodyTabbedPane.setBackground(Color.DARK_GRAY);
+        bodyTabbedPane.setOpaque(true);
+        messageBody.add(bodyTabbedPane,BorderLayout.CENTER);
+        Controller.bodyTabbedPane=bodyTabbedPane;
+
+
 
         headerInRightSide = new JPanel();
         headerInRightSide.setBackground(Color.DARK_GRAY);

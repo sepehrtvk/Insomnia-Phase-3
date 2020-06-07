@@ -24,6 +24,7 @@ public class Controller {
     public static JPanel messageBody;
     public static JPanel headerInRightSide;
     public static JComboBox headerRightComboBox;
+    public static JTabbedPane bodyTabbedPane;
 
 
 

@@ -213,6 +213,7 @@ public class Request {
             responseCode = urlConnection.getResponseCode();
             responseMessage = urlConnection.getResponseMessage();
             Controller.dataNumberStatus.setText(" " + responseCode + " " + responseMessage);
+            Controller.bodyTabbedPane.removeAll();
 
             if (responseCode == 200) Controller.dataNumberStatus.setBackground(Color.GREEN);
             else Controller.dataNumberStatus.setBackground(Color.ORANGE);
@@ -235,48 +236,33 @@ public class Request {
                         response += temp + "\n";
                         temp = bufferedReader.readLine();
                     }
+                    if (Controller.messageBody.getComponents().length == 2) Controller.messageBody.remove(1);
+                    JTextArea responseField = new JTextArea(response);
+                    responseField.setLineWrap(true);
+                    JScrollPane scrollPane = new JScrollPane(responseField);
+                    responseField.setBackground(Color.lightGray);
+                    responseField.setEditable(false);
+                    Controller.bodyTabbedPane.addTab("Raw",scrollPane);
 
                     Controller.dataSizeStatus.setText(response.length() / 1000 + "." + response.length() % 1000 + " KB");
 
 
 
+                    JEditorPane jep = new JEditorPane();
+                    jep.setEditable(false);
+                    try {
+                        jep.setPage(getUrl());
+                    } catch (IOException ee) {
+                        jep.setContentType("text/html");
+                        jep.setText("<html>Could not load</html>");
+                        ee.printStackTrace();
+                    }
+                    JScrollPane scrollPane2 = new JScrollPane(jep);
+                    if (Controller.messageBody.getComponents().length > 1)
+                        Controller.messageBody.remove(1);
+                    Controller.bodyTabbedPane.addTab("Preview",scrollPane2);
 
-                    JComboBox jComboBox = (JComboBox)Controller.messageBody.getComponent(0);
-                    jComboBox.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            if(((String)jComboBox.getSelectedItem()).equals("Raw")){
-                                if (Controller.messageBody.getComponents().length == 2) Controller.messageBody.remove(1);
-                                JTextArea responseField = new JTextArea(response);
-                                responseField.setLineWrap(true);
-                                JScrollPane scrollPane = new JScrollPane(responseField);
-                                responseField.setBackground(Color.lightGray);
-                                responseField.setEditable(false);
-                                Controller.messageBody.add(scrollPane);
-
-                            }
-                            if(((String)jComboBox.getSelectedItem()).equals("Preview")){
-                                JEditorPane jep = new JEditorPane();
-                                jep.setEditable(false);
-                                try {
-                                    jep.setPage(getUrl());
-                                }catch (IOException ee) {
-                                    jep.setContentType("text/html");
-                                    jep.setText("<html>Could not load</html>");
-                                    ee.printStackTrace();
-                                }
-                                JScrollPane scrollPane2 = new JScrollPane(jep);
-                                if(Controller.messageBody.getComponents().length>1)Controller.messageBody.remove(1);
-                                Controller.messageBody.add(scrollPane2,BorderLayout.CENTER);
-
-                            }
-                            if(((String)jComboBox.getSelectedItem()).equals("JSON")){
-
-                            }
-                        }
-                    });
-
-
+                    Controller.bodyTabbedPane.addTab("JSON",new JPanel());
 
 
                 } else {

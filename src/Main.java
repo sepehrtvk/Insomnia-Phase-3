@@ -43,9 +43,13 @@ public class Main {
                 argees.add("-i");
                 String[] arr = new String[argees.size()];
                 arr = argees.toArray(arr);
-
+                for(String str : arr){
+                    System.out.println(str);
+                }
                 Request request = new Request(arr);
                 request.send();
+                argees.clear();
+
             }
         });
         Controller.savebtn.addActionListener(new ActionListener() {
