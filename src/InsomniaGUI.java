@@ -118,6 +118,13 @@ public class InsomniaGUI extends JFrame {
                 RightSidePanel.setBackground(Color.darkGray);
                 RightSidePanel.getHeaderInRightSide().setBackground(Color.darkGray);
                 RightSidePanel.getMessageBody().setBackground(Color.darkGray);
+                Controller.messageBody.setBackground(Color.darkGray);
+
+                Component[] components = RightSidePanel.getMessageBody().getComponents();
+                for(Component component : components){
+                    component.setBackground(Color.darkGray);
+                }
+
                 CenterSidePanel.getUrlPanel().setBackground(Color.gray);
                 RightSidePanel.getRightSideTabbedPane().setBackground(Color.darkGray);
                 RightSidePanel.getStatusPanel().setBackground(Color.gray);
@@ -157,6 +164,11 @@ public class InsomniaGUI extends JFrame {
                 LeftSidePanel.setBackground(Color.cyan);
                 LeftSidePanel.getList().setBackground(Color.cyan);
                 RightSidePanel.setBackground(Color.cyan);
+                Component[] components = RightSidePanel.getMessageBody().getComponents();
+                for(Component component : components){
+                    component.setBackground(Color.cyan);
+                }
+                Controller.messageBody.setBackground(Color.cyan);
                 RightSidePanel.getHeaderInRightSide().setBackground(Color.cyan);
                 RightSidePanel.getMessageBody().setBackground(Color.cyan);
                 RightSidePanel.getRightSideTabbedPane().setBackground(Color.cyan);

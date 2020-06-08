@@ -140,13 +140,12 @@ public class CenterSidePanel extends JPanel {
                     jFileChooser.showOpenDialog(new JFrame());
                     File binaryFile = jFileChooser.getSelectedFile();
                     SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-
-                    JTextArea jTextField = new JTextArea("* File Name : "+binaryFile.getName()+"\n* File Path : "+binaryFile.getAbsolutePath()+"\n* Last Modified : "+sdf.format(binaryFile.lastModified())+"\n* Size : "+binaryFile.length()+" bytes");
+                    JTextArea jTextField = new JTextArea("* File Name : " + binaryFile.getName() + "\n* File Path : " + binaryFile.getAbsolutePath() + "\n* Last Modified : " + sdf.format(binaryFile.lastModified()) + "\n* Size : " + binaryFile.length() + " bytes");
                     jTextField.setEditable(false);
                     jTextField.setBackground(Color.lightGray);
-                    Controller.uploadFile=binaryFile.getName();
-                    if(bodyPanel.getComponents().length>1)bodyPanel.remove(1);
-                    bodyPanel.add(jTextField,BorderLayout.CENTER);
+                    Controller.uploadFile = binaryFile.getName();
+                    if (bodyPanel.getComponents().length > 1) bodyPanel.remove(1);
+                    bodyPanel.add(jTextField, BorderLayout.CENTER);
                 }
             }
         });
@@ -160,7 +159,7 @@ public class CenterSidePanel extends JPanel {
         initUrlPanel();
         initDocsTab();
 
-        Controller.centerSidePanel=this;
+        Controller.centerSidePanel = this;
 
     }
 
@@ -258,7 +257,7 @@ public class CenterSidePanel extends JPanel {
         headerPanel = new JPanel();
         headerPanel.setBackground(Color.DARK_GRAY);
         tabbedPane.addTab("    Header    ", headerPanel);
-        Controller.headerPanel=headerPanel;
+        Controller.headerPanel = headerPanel;
 
         GridBagLayout gbl_headerPanel = new GridBagLayout();
         headerPanel.setLayout(gbl_headerPanel);
@@ -307,12 +306,12 @@ public class CenterSidePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("aqqqqqqq");
-                if(activeHeaderCheckBox2.isSelected())activeHeader = true;
+                if (activeHeaderCheckBox2.isSelected()) activeHeader = true;
                 System.out.println(activeHeader);
             }
         });
         headerPanel.add(activeHeaderCheckBox2, gbc);
-        Controller.activeHeader=activeHeader;
+        Controller.activeHeader = activeHeader;
 
         //add delete button.
         deleteHeaderBtn2 = new JButton("☓");
@@ -358,12 +357,12 @@ public class CenterSidePanel extends JPanel {
         gbc.gridy = 0;
         methodsComboBox.setBackground(Color.WHITE);
         urlPanel.add(methodsComboBox, gbc);
-        Controller.methodsComboBox=methodsComboBox;
+        Controller.methodsComboBox = methodsComboBox;
 
         urlText = new JTextField();
         urlText.setPreferredSize(new Dimension(300, 51));
         urlText.setText("                                    URL");
-        Controller.url=urlText;
+        Controller.url = urlText;
 
         gbc.gridwidth = 2;
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -375,12 +374,12 @@ public class CenterSidePanel extends JPanel {
         sendBtn = new JButton("SEND");
         sendBtn.setPreferredSize(new Dimension(80, 27));
         sendBtn.setBackground(Color.WHITE);
-        Controller.sendbtn=sendBtn;
+        Controller.sendbtn = sendBtn;
 
         saveBtn = new JButton("SAVE");
         saveBtn.setPreferredSize(new Dimension(80, 27));
         saveBtn.setBackground(Color.WHITE);
-        Controller.savebtn=saveBtn;
+        Controller.savebtn = saveBtn;
 //        saveBtn.addActionListener(new ActionListener() {
 //            @Override
 //            public void actionPerformed(ActionEvent e) {
