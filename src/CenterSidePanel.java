@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 /**
  * the CenterSidePanel class that extends JPanel , prepares center panel for the header , query , auth , docs and message body.
@@ -138,20 +139,14 @@ public class CenterSidePanel extends JPanel {
                     jFileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
                     jFileChooser.showOpenDialog(new JFrame());
                     File binaryFile = jFileChooser.getSelectedFile();
-                    JTextField jTextField = new JTextField("*File Name : "+binaryFile.getName()+" | "+"*File Path : "+binaryFile.getAbsolutePath());
+                    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+
+                    JTextArea jTextField = new JTextArea("* File Name : "+binaryFile.getName()+"\n* File Path : "+binaryFile.getAbsolutePath()+"\n* Last Modified : "+sdf.format(binaryFile.lastModified())+"\n* Size : "+binaryFile.length()+" bytes");
                     jTextField.setEditable(false);
                     jTextField.setBackground(Color.lightGray);
                     Controller.uploadFile=binaryFile.getName();
                     if(bodyPanel.getComponents().length>1)bodyPanel.remove(1);
                     bodyPanel.add(jTextField,BorderLayout.CENTER);
-//                    if(Controller.sendbtn.isSelected()){
-//                        String[] args = new String[4];
-//                        args[0]=Controller.url.getText();
-//                        args[1]="-i";
-//                        args[2]="-u";
-//                        args[3]=binaryFile.getName();
-//                        System.out.println("aaaaa");
-//                    }
                 }
             }
         });
