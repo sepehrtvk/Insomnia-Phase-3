@@ -266,8 +266,8 @@ public class Request {
                     } catch (IOException ee) {
                         jep.setContentType("text/html");
                         jep.setText("<html>Could not load</html>");
-                        ee.printStackTrace();
                     }
+
                     JScrollPane scrollPane2 = new JScrollPane(jep);
                     if (Controller.messageBody.getComponents().length > 1)
                         Controller.messageBody.remove(1);

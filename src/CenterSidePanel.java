@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -136,6 +137,21 @@ public class CenterSidePanel extends JPanel {
                     JFileChooser jFileChooser = new JFileChooser();
                     jFileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
                     jFileChooser.showOpenDialog(new JFrame());
+                    File binaryFile = jFileChooser.getSelectedFile();
+                    JTextField jTextField = new JTextField("*File Name : "+binaryFile.getName()+" | "+"*File Path : "+binaryFile.getAbsolutePath());
+                    jTextField.setEditable(false);
+                    jTextField.setBackground(Color.lightGray);
+                    Controller.uploadFile=binaryFile.getName();
+                    if(bodyPanel.getComponents().length>1)bodyPanel.remove(1);
+                    bodyPanel.add(jTextField,BorderLayout.CENTER);
+//                    if(Controller.sendbtn.isSelected()){
+//                        String[] args = new String[4];
+//                        args[0]=Controller.url.getText();
+//                        args[1]="-i";
+//                        args[2]="-u";
+//                        args[3]=binaryFile.getName();
+//                        System.out.println("aaaaa");
+//                    }
                 }
             }
         });
