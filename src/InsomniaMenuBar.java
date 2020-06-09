@@ -109,7 +109,7 @@ public class InsomniaMenuBar extends JMenuBar {
                     }
 
                     JFrame jFrame = new JFrame("Help : ");
-                    jFrame.setBounds(100,100,355,255);
+                    jFrame.setBounds(300,300,355,255);
                     jFrame.setLayout(new BorderLayout());
                     jFrame.add(jTextArea);
                     jTextArea.setEditable(false);

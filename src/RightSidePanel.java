@@ -73,7 +73,7 @@ public class RightSidePanel extends JPanel {
         Controller.dataTimeStatus = dataTimeStatus;
 
         //add data number status.
-        dataNumberStatus = new JLabel("200 OK");
+        dataNumberStatus = new JLabel("----");
         dataNumberStatus.setHorizontalAlignment(SwingConstants.CENTER);
         dataNumberStatus.setVerticalAlignment(SwingConstants.CENTER);
         dataNumberStatus.setBounds(10, 10, 100, 31);

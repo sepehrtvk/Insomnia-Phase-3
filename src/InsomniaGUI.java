@@ -133,6 +133,7 @@ public class InsomniaGUI extends JFrame {
                 CenterSidePanel.getDocsPanel().setBackground(Color.darkGray);
                 CenterSidePanel.getHeaderPanel().setBackground(Color.darkGray);
                 CenterSidePanel.getTabbedPane().setBackground(Color.darkGray);
+                CenterSidePanel.getBodyPanel().getComponent(1).setBackground(Color.darkGray);
                 CenterSidePanel.getBodyPanel().setBackground(Color.darkGray);
                 CenterSidePanel.getQueryPanel().setBackground(Color.darkGray);
                 CenterSidePanel.getHeaderText().setBackground(Color.gray);
@@ -180,6 +181,7 @@ public class InsomniaGUI extends JFrame {
                 CenterSidePanel.getHeaderPanel().setBackground(Color.cyan);
                 CenterSidePanel.getTabbedPane().setBackground(Color.cyan);
                 CenterSidePanel.getBodyPanel().setBackground(Color.cyan);
+                CenterSidePanel.getBodyPanel().getComponent(1).setBackground(Color.cyan);
                 CenterSidePanel.getQueryPanel().setBackground(Color.cyan);
                 CenterSidePanel.getHeaderText().setBackground(Color.pink);
                 CenterSidePanel.getNameText().setBackground(Color.pink);
