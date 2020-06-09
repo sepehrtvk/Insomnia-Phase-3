@@ -38,21 +38,41 @@ public class Main {
         Controller.sendbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                argees.add(Controller.url.getText());
+
+                Component[] queryPanelComponents = Controller.qeuryPanel.getComponents();
+                JCheckBox jCheckBoxQuery = (JCheckBox) queryPanelComponents[5];
+                if (jCheckBoxQuery.isSelected()) {
+
+                    StringBuilder sb = new StringBuilder();
+
+                    for (int i = 3; i < queryPanelComponents.length; i = i + 5) {
+                        JTextField key = (JTextField) queryPanelComponents[i];
+                        JTextField value = (JTextField) queryPanelComponents[i + 1];
+                        JCheckBox jCheckBox2 = (JCheckBox) queryPanelComponents[i + 2];
+                        if (jCheckBox2.isSelected())
+                            sb.append(key.getText() + "=" + value.getText() + "&");
+
+                    }
+                    String str = sb.toString();
+                    sb.deleteCharAt(str.length() - 1);
+                    argees.add(Controller.url.getText() + "?" + sb.toString());
+                } else argees.add(Controller.url.getText());
+
+
                 argees.add("-M");
                 argees.add(Controller.methodsComboBox.getSelectedItem().toString());
                 argees.add("-i");
 
-                Component[] components = Controller.headerPanel.getComponents();
-                JCheckBox jCheckBox = (JCheckBox) components[3];
+                Component[] headerPanelComponents = Controller.headerPanel.getComponents();
+                JCheckBox jCheckBox = (JCheckBox) headerPanelComponents[3];
                 if (jCheckBox.isSelected()) {
                     argees.add("--headers");
                     StringBuilder sb = new StringBuilder();
 
-                    for (int i = 1; i < components.length; i = i + 5) {
-                        JTextField key = (JTextField) components[i];
-                        JTextField value = (JTextField) components[i + 1];
-                        JCheckBox jCheckBox2 = (JCheckBox) components[i + 2];
+                    for (int i = 1; i < headerPanelComponents.length; i = i + 5) {
+                        JTextField key = (JTextField) headerPanelComponents[i];
+                        JTextField value = (JTextField) headerPanelComponents[i + 1];
+                        JCheckBox jCheckBox2 = (JCheckBox) headerPanelComponents[i + 2];
                         if (jCheckBox2.isSelected())
                             sb.append(key.getText() + ":" + value.getText() + ";");
 
@@ -62,16 +82,16 @@ public class Main {
                     argees.add(sb.toString());
                 }
                 try {
-                    Component[] components2 = Controller.bodyNewPanel.getComponents();
-                    JCheckBox jCheckBox2 = (JCheckBox) components2[3];
+                    Component[] bodyNewPanelComponents = Controller.bodyNewPanel.getComponents();
+                    JCheckBox jCheckBox2 = (JCheckBox) bodyNewPanelComponents[3];
                     if (jCheckBox2.isSelected()) {
                         argees.add("-d");
                         StringBuilder sb = new StringBuilder();
 
-                        for (int i = 1; i < components2.length; i = i + 5) {
-                            JTextField key = (JTextField) components2[i];
-                            JTextField value = (JTextField) components2[i + 1];
-                            JCheckBox jCheckBox3 = (JCheckBox) components2[i + 2];
+                        for (int i = 1; i < bodyNewPanelComponents.length; i = i + 5) {
+                            JTextField key = (JTextField) bodyNewPanelComponents[i];
+                            JTextField value = (JTextField) bodyNewPanelComponents[i + 1];
+                            JCheckBox jCheckBox3 = (JCheckBox) bodyNewPanelComponents[i + 2];
                             if (jCheckBox3.isSelected())
                                 sb.append(key.getText() + "=" + value.getText() + "&");
 
@@ -80,11 +100,11 @@ public class Main {
                         sb.deleteCharAt(str.length() - 1);
                         argees.add(sb.toString());
                     }
-                }catch (NullPointerException nu){
+                } catch (NullPointerException nu) {
                     System.out.println();
                 }
 
-                if(!Controller.uploadFile.equals("")){
+                if (!Controller.uploadFile.equals("")) {
                     argees.add("-u");
                     argees.add(Controller.uploadFile);
                 }

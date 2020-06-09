@@ -361,6 +361,7 @@ public class CenterSidePanel extends JPanel {
         gbc.gridx = 2;
         gbc.gridy = 1;
         queryPanel.add(nameText, gbc);
+        Controller.qeuryPanel=queryPanel;
 
         newValueText = new JTextField(15);
         newValueText.setBackground(Color.GRAY);
