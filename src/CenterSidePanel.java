@@ -164,7 +164,7 @@ public class CenterSidePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if ((bodyTypeComboBox.getSelectedItem()).equals("Binary Data")) {
-
+                    Controller.formData=false;
                     if (bodyPanel.getComponents().length > 1) {
                         for (int i = 1; i < bodyPanel.getComponents().length; i++) {
                             bodyPanel.remove(i);
@@ -188,6 +188,7 @@ public class CenterSidePanel extends JPanel {
                     bodyPanel.revalidate();
                 }
                 if ((bodyTypeComboBox.getSelectedItem()).equals("Form Data")) {
+                    Controller.formData=true;
                     Controller.uploadFile = "";
                     if (bodyPanel.getComponents().length > 1) {
                         for (int i = 1; i < bodyPanel.getComponents().length; i++) {
@@ -199,6 +200,7 @@ public class CenterSidePanel extends JPanel {
                     initFormData();
                 }
                 if ((bodyTypeComboBox.getSelectedItem()).equals("No Body")) {
+                    Controller.formData=false;
                     Controller.uploadFile = "";
                     if (bodyPanel.getComponents().length > 1) {
                         for (int i = 1; i < bodyPanel.getComponents().length; i++) {
@@ -210,6 +212,7 @@ public class CenterSidePanel extends JPanel {
 
                 }
                 if ((bodyTypeComboBox.getSelectedItem()).equals("JSON")) {
+                    Controller.formData=false;
                     Controller.uploadFile = "";
                     if (bodyPanel.getComponents().length > 1) {
                         for (int i = 1; i < bodyPanel.getComponents().length; i++) {

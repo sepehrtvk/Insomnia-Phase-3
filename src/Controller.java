@@ -14,6 +14,7 @@ public class Controller {
     public static boolean activeHeader;
     public static String uploadFile="";
     public static JTextArea jsonText;
+    public static boolean formData= false;
 
 
 

@@ -1,9 +1,13 @@
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -29,8 +33,7 @@ public class Main {
 // If Nimbus is not available, you can set the GUI to another look and feel.
         }
         //show GUI.
-        InsomniaGUI insomniaGUI = new InsomniaGUI();
-
+        new InsomniaGUI();
 
 /**************/
 
@@ -81,7 +84,7 @@ public class Main {
                     sb.deleteCharAt(str.length() - 1);
                     argees.add(sb.toString());
                 }
-                try {
+                if (Controller.formData) {
                     Component[] bodyNewPanelComponents = Controller.bodyNewPanel.getComponents();
                     JCheckBox jCheckBox2 = (JCheckBox) bodyNewPanelComponents[3];
                     if (jCheckBox2.isSelected()) {
@@ -100,10 +103,7 @@ public class Main {
                         sb.deleteCharAt(str.length() - 1);
                         argees.add(sb.toString());
                     }
-                } catch (NullPointerException nu) {
-                    System.out.println();
                 }
-
                 if (!Controller.uploadFile.equals("")) {
                     argees.add("-u");
                     argees.add(Controller.uploadFile);

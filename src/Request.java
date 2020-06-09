@@ -1,11 +1,14 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
@@ -262,16 +265,30 @@ public class Request {
                     JEditorPane jep = new JEditorPane();
                     jep.setEditable(false);
                     try {
+                        BufferedImage image = null;
+                        try {
+                            image = ImageIO.read(url);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                         jep.setPage(getUrl());
+                        if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("png")){
+                            JLabel MYJ = new JLabel(new ImageIcon(image));
+                            Controller.bodyTabbedPane.addTab("Preview", MYJ);
+
+                        }
+                        else {
+                            JScrollPane scrollPane2 = new JScrollPane(jep);
+                            Controller.bodyTabbedPane.addTab("Preview", scrollPane2);
+
+                        }
                     } catch (IOException ee) {
                         jep.setContentType("text/html");
                         jep.setText("<html>Could not load</html>");
                     }
 
-                    JScrollPane scrollPane2 = new JScrollPane(jep);
                     if (Controller.messageBody.getComponents().length > 1)
                         Controller.messageBody.remove(1);
-                    Controller.bodyTabbedPane.addTab("Preview", scrollPane2);
 
                     Controller.bodyTabbedPane.addTab("JSON", new JPanel());
 
