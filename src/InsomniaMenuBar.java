@@ -1,7 +1,12 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * the InsomniaMenuBar class that extends JMenuBar , is used to make a menu bar for the app that contains
@@ -86,6 +91,52 @@ public class InsomniaMenuBar extends JMenuBar {
         KeyStroke aboutKey = KeyStroke.getKeyStroke("control A");
         help.setAccelerator(helpKey);
         about.setAccelerator(aboutKey);
+        help.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    BufferedReader bufferedReader = new BufferedReader(new FileReader("help.txt"));
+
+                    String line;
+                    StringBuffer sb = new StringBuffer();
+                    JTextArea jTextArea = new JTextArea();
+
+                    while ((line = bufferedReader.readLine()) != null) {
+                        sb.append(line);
+                        sb.append("\n");
+                        jTextArea.append(line);
+                        jTextArea.append("\n");
+                    }
+
+                    JFrame jFrame = new JFrame("Help : ");
+                    jFrame.setBounds(100,100,355,255);
+                    jFrame.setLayout(new BorderLayout());
+                    jFrame.add(jTextArea);
+                    jTextArea.setEditable(false);
+                    jFrame.setResizable(false);
+                    jTextArea.setBackground(Color.lightGray);
+                    JButton jButton = new JButton("Close");
+                    jFrame.add(jButton,BorderLayout.SOUTH);
+                    jFrame.setVisible(true);
+                    jButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent eee) {
+                            jFrame.dispose();
+                        }
+                    });
+
+                    System.out.println("\u001B[34m" + sb.toString() + "\u001B[0m");
+                    bufferedReader.close();
+
+                } catch (FileNotFoundException er) {
+                    er.printStackTrace();
+                    System.out.println("help.txt file is not exist.");
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
+            }
+        });
 
         menuHelp.add(about);
         menuHelp.add(help);
