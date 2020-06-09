@@ -159,15 +159,15 @@ public class CenterSidePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if ((bodyTypeComboBox.getSelectedItem()).equals("Binary Data")) {
-                    if ((bodyTypeComboBox.getSelectedItem()).equals("Form Data")) {
-                        if (bodyPanel.getComponents().length > 1) {
-                            for (int i = 1; i < bodyPanel.getComponents().length; i++) {
-                                bodyPanel.remove(i);
-                                bodyPanel.repaint();
-                                bodyPanel.revalidate();
-                            }
+
+                    if (bodyPanel.getComponents().length > 1) {
+                        for (int i = 1; i < bodyPanel.getComponents().length; i++) {
+                            bodyPanel.remove(i);
+                            bodyPanel.repaint();
+                            bodyPanel.revalidate();
                         }
                     }
+
                     JFileChooser jFileChooser = new JFileChooser();
                     jFileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
                     jFileChooser.showOpenDialog(new JFrame());
@@ -183,6 +183,7 @@ public class CenterSidePanel extends JPanel {
                     bodyPanel.revalidate();
                 }
                 if ((bodyTypeComboBox.getSelectedItem()).equals("Form Data")) {
+                    Controller.uploadFile = "";
                     if (bodyPanel.getComponents().length > 1) {
                         for (int i = 1; i < bodyPanel.getComponents().length; i++) {
                             bodyPanel.remove(i);
@@ -191,6 +192,17 @@ public class CenterSidePanel extends JPanel {
                         }
                     }
                     initFormData();
+                }
+                if ((bodyTypeComboBox.getSelectedItem()).equals("No Body")) {
+                    Controller.uploadFile = "";
+                    if (bodyPanel.getComponents().length > 1) {
+                        for (int i = 1; i < bodyPanel.getComponents().length; i++) {
+                            bodyPanel.remove(i);
+                            bodyPanel.repaint();
+                            bodyPanel.revalidate();
+                        }
+                    }
+
                 }
             }
         });

@@ -67,6 +67,7 @@ public class Main {
                     argees.add(Controller.uploadFile);
                 }
 
+
                 String[] arr = new String[argees.size()];
                 arr = argees.toArray(arr);
                 for (String str2 : arr) {
