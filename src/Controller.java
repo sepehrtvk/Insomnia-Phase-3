@@ -11,6 +11,7 @@ public class Controller {
     public static JPanel bodyNewPanel;
     public static boolean activeHeader;
     public static String uploadFile="";
+    public static JTextArea jsonText;
 
 
 

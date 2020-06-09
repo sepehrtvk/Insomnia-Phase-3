@@ -79,6 +79,9 @@ public class CenterSidePanel extends JPanel {
     //url text.
     private JTextField urlText;
 
+    //json text.
+    private JTextArea jsonText;
+
     //send button.
     private JButton sendBtn;
 
@@ -214,10 +217,10 @@ public class CenterSidePanel extends JPanel {
                         }
                     }
 
-                    JTextArea jsonText = new JTextArea();
+                    jsonText = new JTextArea();
                     jsonText.setBackground(Color.DARK_GRAY);
                     bodyPanel.add(jsonText,BorderLayout.CENTER);
-                    t
+                    Controller.jsonText=jsonText;
 
 
 
