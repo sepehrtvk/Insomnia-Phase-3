@@ -2,6 +2,8 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -329,7 +331,14 @@ public class CenterSidePanel extends JPanel {
         gbc.insets = new Insets(0, 0, 5, 5);
         gbc.gridx = 5;
         gbc.gridy = 0;
-        //copyUrl.addActionListener(ne);
+        copyUrl.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                StringSelection selection = new StringSelection(urlPreview.getText());
+                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                clipboard.setContents(selection, selection);
+            }
+        });
         queryPanel.add(copyUrl, gbc);
 
 
