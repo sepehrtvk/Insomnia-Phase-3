@@ -206,16 +206,25 @@ public class CenterSidePanel extends JPanel {
     public void initFormData() {
 
         bodyNewPanel = new JPanel();
+        bodyNewPanel.setName("bodyNewPanel");
         bodyNewPanel.setBackground(Color.DARK_GRAY);
         GridBagLayout gbl_bodyPanel = new GridBagLayout();
         bodyNewPanel.setLayout(gbl_bodyPanel);
 
         final GridBagConstraints gbc = new GridBagConstraints();
+        lineLabel2 = new JLabel("𝌆");
+        lineLabel2.setFont(new Font("SansSerif", Font.PLAIN, 21));
+
+        gbc.anchor = GridBagConstraints.NORTHWEST;
+        gbc.insets = new Insets(0, 0, 5, 5);
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        bodyNewPanel.add(lineLabel2, gbc);
 
         nameText = new JTextField(15);
         nameText.setBackground(Color.GRAY);
         nameText.setText("New Name");
-        nameText.addMouseListener(new MouseActionFormData());
+        nameText.addMouseListener(new MouseActionClass(formDataCounter, bodyNewPanel));
 
         gbc.fill = GridBagConstraints.BOTH;
         gbc.insets = new Insets(0, 0, 5, 5);
@@ -260,6 +269,7 @@ public class CenterSidePanel extends JPanel {
      */
     public void initQueryTab() {
         queryPanel = new JPanel();
+        queryPanel.setName("queryPanel");
         queryPanel.setBackground(Color.DARK_GRAY);
         tabbedPane.addTab("      Query       ", queryPanel);
 
@@ -300,7 +310,7 @@ public class CenterSidePanel extends JPanel {
         nameText = new JTextField(15);
         nameText.setBackground(Color.GRAY);
         nameText.setText("New Name");
-        nameText.addMouseListener(new MouseActionQuery());
+        nameText.addMouseListener(new MouseActionClass(queryCounter, queryPanel));
 
         gbc.fill = GridBagConstraints.BOTH;
         gbc.insets = new Insets(0, 0, 5, 5);
@@ -347,6 +357,7 @@ public class CenterSidePanel extends JPanel {
 
         //add header panel.
         headerPanel = new JPanel();
+        headerPanel.setName("headerPanel");
         headerPanel.setBackground(Color.DARK_GRAY);
         tabbedPane.addTab("    Header    ", headerPanel);
         Controller.headerPanel = headerPanel;
@@ -412,7 +423,7 @@ public class CenterSidePanel extends JPanel {
         gbc.gridy = 1;
 
         headerPanel.add(deleteHeaderBtn2, gbc);
-        headerText.addMouseListener(new MouseActionHeader());
+        headerText.addMouseListener(new MouseActionClass(headerCounter, headerPanel));
     }
 
     /**
@@ -510,141 +521,61 @@ public class CenterSidePanel extends JPanel {
     }
 
     /**
-     * make a mouse listener to add a new key and value for the header panel.
+     * make a mouse listener to add a new key and value for the each panel.
      */
-    private class MouseActionHeader extends MouseAdapter {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            while (headerCounter < 15) {
-                revalidate();
-                repaint();
-                headerPanel.repaint();
-                headerPanel.revalidate();
-                final GridBagConstraints gbc = new GridBagConstraints();
-                final JLabel lineLabel_2 = new JLabel("𝌆");
-                lineLabel_2.setFont(new Font("SansSerif", Font.PLAIN, 21));
-                gbc.anchor = GridBagConstraints.NORTHWEST;
-                gbc.insets = new Insets(0, 0, 5, 5);
-                gbc.gridx = 1;
-                gbc.gridy = headerCounter;
-                headerPanel.add(lineLabel_2, gbc);
 
-                final JTextField headerText_2 = new JTextField(10);
-                headerText_2.setBackground(nameText.getBackground());
-                headerText_2.setText("Header");
-                gbc.fill = GridBagConstraints.BOTH;
-                gbc.insets = new Insets(0, 0, 5, 5);
-                gbc.gridx = 2;
-                gbc.gridy = headerCounter;
-                headerPanel.add(headerText_2, gbc);
+    private class MouseActionClass extends MouseAdapter {
 
-                final JTextField valueText_2 = new JTextField(10);
-                valueText_2.setBackground(nameText.getBackground());
-                valueText_2.setText("Value");
+        private int counter;
+        private JPanel jPanel;
 
-                gbc.fill = GridBagConstraints.BOTH;
-                gbc.insets = new Insets(0, 0, 5, 5);
-                gbc.gridx = 3;
-                gbc.gridy = headerCounter;
-                headerPanel.add(valueText_2, gbc);
-
-                final JCheckBox activeHeaderCheckBox_2 = new JCheckBox("");
-
-                gbc.anchor = GridBagConstraints.WEST;
-                gbc.insets = new Insets(0, 0, 5, 5);
-                gbc.gridx = 4;
-                gbc.gridy = headerCounter;
-                headerPanel.add(activeHeaderCheckBox_2, gbc);
-
-                final JButton deleteHeaderBtn_2 = new JButton("☓");
-                deleteHeaderBtn_2.setBackground(nameText.getBackground());
-
-
-                deleteHeaderBtn_2.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        headerPanel.remove(headerText_2);
-                        headerPanel.remove(valueText_2);
-                        headerPanel.remove(activeHeaderCheckBox_2);
-                        headerPanel.remove(deleteHeaderBtn_2);
-                        headerPanel.remove(lineLabel_2);
-                        revalidate();
-                        repaint();
-                        headerPanel.repaint();
-                        headerPanel.revalidate();
-
-                    }
-                });
-
-                gbc.fill = GridBagConstraints.BOTH;
-                gbc.insets = new Insets(0, 0, 5, 5);
-                gbc.gridx = 5;
-                gbc.gridy = headerCounter;
-                headerPanel.add(deleteHeaderBtn_2, gbc);
-                headerText_2.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        super.mouseClicked(e);
-                        revalidate();
-                        repaint();
-                        headerPanel.repaint();
-                        headerPanel.revalidate();
-                    }
-                });
-                revalidate();
-                repaint();
-                headerPanel.repaint();
-                headerPanel.revalidate();
-                headerCounter++;
-                break;
-            }
+        public MouseActionClass(int counter, JPanel jPanel) {
+            this.counter = counter;
+            this.jPanel = jPanel;
         }
 
-    }
-
-    /**
-     * make a mouse listener to add a new key and value for the query panel.
-     */
-
-    private class MouseActionQuery extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e) {
-            while (queryCounter < 15) {
+            while (counter < 15) {
                 final GridBagConstraints gbc = new GridBagConstraints();
                 final JLabel lineLabel_2 = new JLabel("𝌆");
                 lineLabel_2.setFont(new Font("SansSerif", Font.PLAIN, 21));
                 gbc.anchor = GridBagConstraints.NORTHWEST;
                 gbc.insets = new Insets(0, 0, 5, 5);
                 gbc.gridx = 1;
-                gbc.gridy = queryCounter;
-                queryPanel.add(lineLabel_2, gbc);
+                gbc.gridy = counter;
+                jPanel.add(lineLabel_2, gbc);
 
                 final JTextField headerText_2 = new JTextField(10);
                 headerText_2.setBackground(newValueText.getBackground());
-                headerText_2.setText("Header");
+                if (jPanel.getName().equals("headerPanel"))
+                    headerText_2.setText("Header");
+                else headerText_2.setText("New Name");
                 gbc.fill = GridBagConstraints.BOTH;
                 gbc.insets = new Insets(0, 0, 5, 5);
                 gbc.gridx = 2;
-                gbc.gridy = queryCounter;
-                queryPanel.add(headerText_2, gbc);
+                gbc.gridy = counter;
+                jPanel.add(headerText_2, gbc);
 
                 final JTextField valueText_2 = new JTextField(10);
                 valueText_2.setBackground(newValueText.getBackground());
-                valueText_2.setText("Value");
+                if (jPanel.getName().equals("headerPanel"))
+                    valueText_2.setText("Value");
+                else valueText_2.setText("New Value");
 
                 gbc.fill = GridBagConstraints.BOTH;
                 gbc.insets = new Insets(0, 0, 5, 5);
                 gbc.gridx = 3;
-                gbc.gridy = queryCounter;
-                queryPanel.add(valueText_2, gbc);
+                gbc.gridy = counter;
+                jPanel.add(valueText_2, gbc);
 
                 final JCheckBox activeHeaderCheckBox_2 = new JCheckBox("");
 
                 gbc.anchor = GridBagConstraints.WEST;
                 gbc.insets = new Insets(0, 0, 5, 5);
                 gbc.gridx = 4;
-                gbc.gridy = queryCounter;
-                queryPanel.add(activeHeaderCheckBox_2, gbc);
+                gbc.gridy = counter;
+                jPanel.add(activeHeaderCheckBox_2, gbc);
 
                 final JButton deleteHeaderBtn_2 = new JButton("☓");
                 deleteHeaderBtn_2.setBackground(newValueText.getBackground());
@@ -653,15 +584,21 @@ public class CenterSidePanel extends JPanel {
                 deleteHeaderBtn_2.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        queryPanel.remove(headerText_2);
-                        queryPanel.remove(valueText_2);
-                        queryPanel.remove(activeHeaderCheckBox_2);
-                        queryPanel.remove(deleteHeaderBtn_2);
-                        queryPanel.remove(lineLabel_2);
+                        jPanel.remove(headerText_2);
+                        jPanel.remove(valueText_2);
+                        jPanel.remove(activeHeaderCheckBox_2);
+                        jPanel.remove(deleteHeaderBtn_2);
+                        jPanel.remove(lineLabel_2);
                         repaint();
                         revalidate();
+                        jPanel.repaint();
+                        jPanel.revalidate();
                         queryPanel.repaint();
                         queryPanel.revalidate();
+                        bodyPanel.repaint();
+                        bodyPanel.revalidate();
+                        headerPanel.repaint();
+                        headerPanel.repaint();
 
                     }
                 });
@@ -669,106 +606,36 @@ public class CenterSidePanel extends JPanel {
                 gbc.fill = GridBagConstraints.BOTH;
                 gbc.insets = new Insets(0, 0, 5, 5);
                 gbc.gridx = 5;
-                gbc.gridy = queryCounter;
-                queryPanel.add(deleteHeaderBtn_2, gbc);
+                gbc.gridy = counter;
+                jPanel.add(deleteHeaderBtn_2, gbc);
 
                 headerText_2.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         super.mouseClicked(e);
-                        revalidate();
                         repaint();
+                        revalidate();
+                        jPanel.repaint();
+                        jPanel.revalidate();
                         queryPanel.repaint();
                         queryPanel.revalidate();
+                        bodyPanel.repaint();
+                        bodyPanel.revalidate();
+                        headerPanel.repaint();
+                        headerPanel.repaint();
                     }
                 });
                 repaint();
                 revalidate();
+                jPanel.repaint();
+                jPanel.revalidate();
                 queryPanel.repaint();
                 queryPanel.revalidate();
-                queryCounter++;
-                break;
-            }
-        }
-
-    }
-    /**
-     * make a mouse listener to add a new key and value for the query panel.
-     */
-
-    private class MouseActionFormData extends MouseAdapter {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            while (formDataCounter < 15) {
-                final GridBagConstraints gbc = new GridBagConstraints();
-
-                final JTextField headerText_2 = new JTextField(10);
-                headerText_2.setBackground(newValueText.getBackground());
-                headerText_2.setText("New Name");
-                gbc.fill = GridBagConstraints.BOTH;
-                gbc.insets = new Insets(0, 0, 5, 5);
-                gbc.gridx = 2;
-                gbc.gridy = formDataCounter;
-                bodyNewPanel.add(headerText_2, gbc);
-
-                final JTextField valueText_2 = new JTextField(10);
-                valueText_2.setBackground(newValueText.getBackground());
-                valueText_2.setText("New Value");
-
-                gbc.fill = GridBagConstraints.BOTH;
-                gbc.insets = new Insets(0, 0, 5, 5);
-                gbc.gridx = 3;
-                gbc.gridy = formDataCounter;
-                bodyNewPanel.add(valueText_2, gbc);
-
-                final JCheckBox activeHeaderCheckBox_2 = new JCheckBox("");
-
-                gbc.anchor = GridBagConstraints.WEST;
-                gbc.insets = new Insets(0, 0, 5, 5);
-                gbc.gridx = 4;
-                gbc.gridy = formDataCounter;
-                bodyNewPanel.add(activeHeaderCheckBox_2, gbc);
-
-                final JButton deleteHeaderBtn_2 = new JButton("☓");
-                deleteHeaderBtn_2.setBackground(newValueText.getBackground());
-
-
-                deleteHeaderBtn_2.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        bodyNewPanel.remove(headerText_2);
-                        bodyNewPanel.remove(valueText_2);
-                        bodyNewPanel.remove(activeHeaderCheckBox_2);
-                        bodyNewPanel.remove(deleteHeaderBtn_2);
-                        repaint();
-                        revalidate();
-                        bodyNewPanel.repaint();
-                        bodyNewPanel.revalidate();
-
-                    }
-                });
-
-                gbc.fill = GridBagConstraints.BOTH;
-                gbc.insets = new Insets(0, 0, 5, 5);
-                gbc.gridx = 5;
-                gbc.gridy = formDataCounter;
-                bodyNewPanel.add(deleteHeaderBtn_2, gbc);
-
-                headerText_2.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        super.mouseClicked(e);
-                        revalidate();
-                        repaint();
-                        bodyNewPanel.repaint();
-                        bodyNewPanel.revalidate();
-                    }
-                });
-                repaint();
-                revalidate();
-                bodyNewPanel.repaint();
-                bodyNewPanel.revalidate();
-                formDataCounter++;
+                bodyPanel.repaint();
+                bodyPanel.revalidate();
+                headerPanel.repaint();
+                headerPanel.repaint();
+                counter++;
                 break;
             }
         }
@@ -894,9 +761,5 @@ public class CenterSidePanel extends JPanel {
 
     public JTextField getValueText() {
         return valueText;
-    }
-
-    public JButton getSendBtn() {
-        return sendBtn;
     }
 }
