@@ -65,6 +65,8 @@ public class Main {
                 argees.add("-M");
                 argees.add(Controller.methodsComboBox.getSelectedItem().toString());
                 argees.add("-i");
+                if(Controller.followRedirect.isSelected()) argees.add("-f");
+
 
                 Component[] headerPanelComponents = Controller.headerPanel.getComponents();
                 JCheckBox jCheckBox = (JCheckBox) headerPanelComponents[3];

@@ -34,6 +34,10 @@ public class Controller {
 
 
 
+    public static JCheckBox followRedirect;
+
+
+
 
 
 

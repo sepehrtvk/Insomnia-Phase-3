@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,7 +25,7 @@ public class InsomniaMenuBar extends JMenuBar {
     private JMenu menuApplication, applicationSubMenu1, theme, menuView, menuHelp;
 
     //hide checkBox for system tray.
-    private final JCheckBox hideCheckBox;
+    private final JCheckBox hideCheckBox,followRedirect;
 
     //menu items.
     private JMenuItem dark, light, applicationSubMenu2, tFullScreen, tSideBar, about, help;
@@ -37,7 +39,9 @@ public class InsomniaMenuBar extends JMenuBar {
         menuApplication = new JMenu("Application");
         menuApplication.setMnemonic(KeyEvent.VK_A);
         applicationSubMenu1 = new JMenu("Options");
-        applicationSubMenu1.add(new JCheckBox("Follow Redirect "));
+        followRedirect = new JCheckBox("Follow Redirect ");
+        Controller.followRedirect=followRedirect;
+        applicationSubMenu1.add(followRedirect);
 
         //hide checkBox.
         hideCheckBox = new JCheckBox("Hide ");

@@ -46,7 +46,7 @@ public class Request {
     private String json = "";
 
     //auto follow redirects.
-    private boolean followRedirect = true;
+    private boolean followRedirect = false;
 
     //show headers in a request.
     private boolean showHeaders = false;
@@ -101,7 +101,7 @@ public class Request {
 
                 //follow redirect.
                 if (arg.contains("-f")) {
-                    followRedirect = false;
+                    followRedirect = true;
                 }
 
                 //headers of the request.
@@ -272,10 +272,9 @@ public class Request {
                             e.printStackTrace();
                         }
                         jep.setPage(getUrl());
-                        if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("png")){
+                        if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("png")||urlConnection.getHeaderField("Content-Type").toLowerCase().contains("jpg")){
                             JLabel MYJ = new JLabel(new ImageIcon(image));
                             Controller.bodyTabbedPane.addTab("Preview", MYJ);
-
                         }
                         else {
                             JScrollPane scrollPane2 = new JScrollPane(jep);
