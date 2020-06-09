@@ -219,9 +219,8 @@ public class CenterSidePanel extends JPanel {
 
                     jsonText = new JTextArea();
                     jsonText.setBackground(Color.DARK_GRAY);
-                    bodyPanel.add(jsonText,BorderLayout.CENTER);
-                    Controller.jsonText=jsonText;
-
+                    bodyPanel.add(jsonText, BorderLayout.CENTER);
+                    Controller.jsonText = jsonText;
 
 
                 }
@@ -294,7 +293,7 @@ public class CenterSidePanel extends JPanel {
         bodyPanel.add(bodyNewPanel, BorderLayout.CENTER);
         bodyPanel.repaint();
         bodyPanel.revalidate();
-        Controller.bodyNewPanel=bodyNewPanel;
+        Controller.bodyNewPanel = bodyNewPanel;
 
     }
 
@@ -317,6 +316,7 @@ public class CenterSidePanel extends JPanel {
         urlPreview.setEditable(false);
         urlPreview.setBorder(new TitledBorder("URL Preview"));
         urlPreview.setBackground(Color.GRAY);
+        Controller.urlPreviewInQuery = urlPreview;
 
         gbc.fill = GridBagConstraints.BOTH;
         gbc.insets = new Insets(0, 0, 5, 5);
@@ -329,6 +329,7 @@ public class CenterSidePanel extends JPanel {
         gbc.insets = new Insets(0, 0, 5, 5);
         gbc.gridx = 5;
         gbc.gridy = 0;
+        //copyUrl.addActionListener(ne);
         queryPanel.add(copyUrl, gbc);
 
 
@@ -497,7 +498,15 @@ public class CenterSidePanel extends JPanel {
         urlText = new JTextField();
         urlText.setPreferredSize(new Dimension(300, 51));
         urlText.setText("                                    URL");
+        urlText.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                Controller.urlPreviewInQuery.setText(urlText.getText());
+            }
+        });
         Controller.url = urlText;
+
 
         gbc.gridwidth = 2;
         gbc.fill = GridBagConstraints.HORIZONTAL;

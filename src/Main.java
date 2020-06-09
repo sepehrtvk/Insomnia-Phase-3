@@ -61,23 +61,27 @@ public class Main {
                     sb.deleteCharAt(str.length() - 1);
                     argees.add(sb.toString());
                 }
-                Component[] components2 = Controller.bodyNewPanel.getComponents();
-                JCheckBox jCheckBox2 = (JCheckBox) components2[3];
-                if (jCheckBox2.isSelected()) {
-                    argees.add("-d");
-                    StringBuilder sb = new StringBuilder();
+                try {
+                    Component[] components2 = Controller.bodyNewPanel.getComponents();
+                    JCheckBox jCheckBox2 = (JCheckBox) components2[3];
+                    if (jCheckBox2.isSelected()) {
+                        argees.add("-d");
+                        StringBuilder sb = new StringBuilder();
 
-                    for (int i = 1; i < components2.length; i = i + 5) {
-                        JTextField key = (JTextField) components2[i];
-                        JTextField value = (JTextField) components2[i + 1];
-                        JCheckBox jCheckBox3 = (JCheckBox) components2[i + 2];
-                        if (jCheckBox3.isSelected())
-                            sb.append(key.getText() + "=" + value.getText() + "&");
+                        for (int i = 1; i < components2.length; i = i + 5) {
+                            JTextField key = (JTextField) components2[i];
+                            JTextField value = (JTextField) components2[i + 1];
+                            JCheckBox jCheckBox3 = (JCheckBox) components2[i + 2];
+                            if (jCheckBox3.isSelected())
+                                sb.append(key.getText() + "=" + value.getText() + "&");
 
+                        }
+                        String str = sb.toString();
+                        sb.deleteCharAt(str.length() - 1);
+                        argees.add(sb.toString());
                     }
-                    String str = sb.toString();
-                    sb.deleteCharAt(str.length() - 1);
-                    argees.add(sb.toString());
+                }catch (NullPointerException nu){
+                    System.out.println();
                 }
 
                 if(!Controller.uploadFile.equals("")){

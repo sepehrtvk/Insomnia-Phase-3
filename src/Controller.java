@@ -4,6 +4,7 @@ public class Controller {
 
     public static CenterSidePanel centerSidePanel;
     public static JTextField url;
+    public static JTextField urlPreviewInQuery;
     public static JButton sendbtn;
     public static JButton savebtn;
     public static JComboBox methodsComboBox;
