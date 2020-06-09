@@ -27,7 +27,7 @@ public class CenterSidePanel extends JPanel {
     private JTabbedPane tabbedPane;
 
     //body type combobox.
-    private final JComboBox bodyTypeComboBox;
+    private JComboBox bodyTypeComboBox;
 
     //auth panel.
     private JPanel authPanel;
@@ -122,6 +122,25 @@ public class CenterSidePanel extends JPanel {
         add(tabbedPane, BorderLayout.CENTER);
 
         //add message body.
+
+        //init tabs.
+        initBodyTab();
+        initAuthTab();
+        initQueryTab();
+        initHeaderTab();
+        initUrlPanel();
+        initDocsTab();
+
+        Controller.centerSidePanel = this;
+
+    }
+
+    /**
+     * this initBodyTab method makes the body tab.
+     */
+
+    public void initBodyTab() {
+
         bodyPanel = new JPanel();
         bodyPanel.setBackground(Color.DARK_GRAY);
         tabbedPane.addTab("      Body      ", bodyPanel);
@@ -130,7 +149,7 @@ public class CenterSidePanel extends JPanel {
 
 
         //body type.
-        bodyTypeComboBox = new JComboBox(new String[]{"Form Data", "JSON", "Binary Data"});
+        bodyTypeComboBox = new JComboBox(new String[]{"No Body","Form Data", "JSON", "Binary Data"});
         bodyTypeComboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -151,15 +170,6 @@ public class CenterSidePanel extends JPanel {
         });
 
         bodyPanel.add(bodyTypeComboBox, BorderLayout.NORTH);
-
-        //init tabs.
-        initAuthTab();
-        initQueryTab();
-        initHeaderTab();
-        initUrlPanel();
-        initDocsTab();
-
-        Controller.centerSidePanel = this;
 
     }
 
