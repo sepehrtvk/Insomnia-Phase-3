@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="93712844-8c09-498b-befe-d874bcebbb3a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CenterSidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CenterSidePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
@@ -21,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="68" selection-start-line="68" selection-end-line="68" />
+            <state relative-caret-position="281">
+              <caret line="148" column="34" selection-start-line="148" selection-start-column="34" selection-end-line="148" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -57,8 +58,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+            <state relative-caret-position="150">
+              <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -77,13 +78,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LeftSidePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="783">
-              <caret line="169" column="37" selection-start-line="169" selection-start-column="37" selection-end-line="169" selection-end-column="37" />
+            <state relative-caret-position="196">
+              <caret line="122" column="61" selection-start-line="122" selection-start-column="61" selection-end-line="122" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5793#5794#0" expanded="true" />
                 <element signature="e#5828#5829#0" expanded="true" />
               </folding>
             </state>
@@ -104,27 +106,27 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CenterSidePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="203" column="21" selection-start-line="203" selection-start-column="21" selection-end-line="203" selection-end-column="21" />
+            <state relative-caret-position="211">
+              <caret line="219" column="21" selection-start-line="219" selection-start-column="21" selection-end-line="219" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#12742#12743#0" expanded="true" />
                 <element signature="e#12833#12834#0" expanded="true" />
-                <element signature="e#20997#20998#0" expanded="true" />
-                <element signature="e#21143#21144#0" expanded="true" />
-                <element signature="e#21297#21298#0" expanded="true" />
-                <element signature="e#21443#21444#0" expanded="true" />
-                <element signature="e#21586#21587#0" expanded="true" />
-                <element signature="e#21736#21737#0" expanded="true" />
-                <element signature="e#21882#21883#0" expanded="true" />
-                <element signature="e#22042#22043#0" expanded="true" />
-                <element signature="e#22200#22201#0" expanded="true" />
-                <element signature="e#22368#22369#0" expanded="true" />
-                <element signature="e#22534#22535#0" expanded="true" />
-                <element signature="e#22696#22697#0" expanded="true" />
+                <element signature="e#21741#21742#0" expanded="true" />
+                <element signature="e#21887#21888#0" expanded="true" />
+                <element signature="e#22041#22042#0" expanded="true" />
+                <element signature="e#22187#22188#0" expanded="true" />
+                <element signature="e#22330#22331#0" expanded="true" />
+                <element signature="e#22480#22481#0" expanded="true" />
+                <element signature="e#22626#22627#0" expanded="true" />
+                <element signature="e#22786#22787#0" expanded="true" />
+                <element signature="e#22944#22945#0" expanded="true" />
+                <element signature="e#23112#23113#0" expanded="true" />
+                <element signature="e#23278#23279#0" expanded="true" />
+                <element signature="e#23440#23441#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -157,11 +159,11 @@
       <list>
         <option value="$PROJECT_DIR$/src/MouseAction.java" />
         <option value="$PROJECT_DIR$/src/LeftSidePanel.java" />
-        <option value="$PROJECT_DIR$/src/Controller.java" />
         <option value="$PROJECT_DIR$/src/Request.java" />
         <option value="$PROJECT_DIR$/src/RightSidePanel.java" />
         <option value="$PROJECT_DIR$/src/InsomniaGUI.java" />
         <option value="$PROJECT_DIR$/src/InsomniaMenuBar.java" />
+        <option value="$PROJECT_DIR$/src/Controller.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/CenterSidePanel.java" />
       </list>
@@ -269,14 +271,7 @@
       <workItem from="1591565440797" duration="24000" />
       <workItem from="1591616055221" duration="4895000" />
       <workItem from="1591645465631" duration="637000" />
-      <workItem from="1591721090521" duration="5312000" />
-    </task>
-    <task id="LOCAL-00001" summary="First commit.">
-      <created>1589223226529</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1589223226529</updated>
+      <workItem from="1591721090521" duration="8410000" />
     </task>
     <task id="LOCAL-00002" summary="Add MenuBar">
       <created>1589223935643</created>
@@ -607,11 +602,25 @@
       <option name="project" value="LOCAL" />
       <updated>1591727697103</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Fix No Body tab.">
+      <created>1591728488507</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1591728488507</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Add form data logic.">
+      <created>1591729862073</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1591729862074</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78547000" />
+    <option name="totallyTimeSpent" value="81645000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -652,8 +661,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add System Tray." />
-    <MESSAGE value="Add Full screen mode." />
     <MESSAGE value="Add SideBar." />
     <MESSAGE value="Fix errors." />
     <MESSAGE value="Add auth and docs panel methods." />
@@ -677,7 +684,9 @@
     <MESSAGE value="Add initBody method." />
     <MESSAGE value="Add fromData new name and value." />
     <MESSAGE value="Add MouseActionClass" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add MouseActionClass" />
+    <MESSAGE value="Fix No Body tab." />
+    <MESSAGE value="Add form data logic." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add form data logic." />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-13.jdk/Contents/Home/lib/src.zip!/java.desktop/javax/swing/JComponent.java">
@@ -746,17 +755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LeftSidePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="783">
-          <caret line="169" column="37" selection-start-line="169" selection-start-column="37" selection-end-line="169" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5828#5829#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RightSidePanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -793,15 +791,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+        <state relative-caret-position="150">
+          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
+        <state relative-caret-position="281">
+          <caret line="148" column="34" selection-start-line="148" selection-start-column="34" selection-end-line="148" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -810,24 +808,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CenterSidePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="203" column="21" selection-start-line="203" selection-start-column="21" selection-end-line="203" selection-end-column="21" />
+        <state relative-caret-position="211">
+          <caret line="219" column="21" selection-start-line="219" selection-start-column="21" selection-end-line="219" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#12742#12743#0" expanded="true" />
             <element signature="e#12833#12834#0" expanded="true" />
-            <element signature="e#20997#20998#0" expanded="true" />
-            <element signature="e#21143#21144#0" expanded="true" />
-            <element signature="e#21297#21298#0" expanded="true" />
-            <element signature="e#21443#21444#0" expanded="true" />
-            <element signature="e#21586#21587#0" expanded="true" />
-            <element signature="e#21736#21737#0" expanded="true" />
-            <element signature="e#21882#21883#0" expanded="true" />
-            <element signature="e#22042#22043#0" expanded="true" />
-            <element signature="e#22200#22201#0" expanded="true" />
-            <element signature="e#22368#22369#0" expanded="true" />
-            <element signature="e#22534#22535#0" expanded="true" />
-            <element signature="e#22696#22697#0" expanded="true" />
+            <element signature="e#21741#21742#0" expanded="true" />
+            <element signature="e#21887#21888#0" expanded="true" />
+            <element signature="e#22041#22042#0" expanded="true" />
+            <element signature="e#22187#22188#0" expanded="true" />
+            <element signature="e#22330#22331#0" expanded="true" />
+            <element signature="e#22480#22481#0" expanded="true" />
+            <element signature="e#22626#22627#0" expanded="true" />
+            <element signature="e#22786#22787#0" expanded="true" />
+            <element signature="e#22944#22945#0" expanded="true" />
+            <element signature="e#23112#23113#0" expanded="true" />
+            <element signature="e#23278#23279#0" expanded="true" />
+            <element signature="e#23440#23441#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LeftSidePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="122" column="61" selection-start-line="122" selection-start-column="61" selection-end-line="122" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5793#5794#0" expanded="true" />
+            <element signature="e#5828#5829#0" expanded="true" />
           </folding>
         </state>
       </provider>

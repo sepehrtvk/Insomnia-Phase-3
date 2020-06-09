@@ -204,6 +204,24 @@ public class CenterSidePanel extends JPanel {
                     }
 
                 }
+                if ((bodyTypeComboBox.getSelectedItem()).equals("JSON")) {
+                    Controller.uploadFile = "";
+                    if (bodyPanel.getComponents().length > 1) {
+                        for (int i = 1; i < bodyPanel.getComponents().length; i++) {
+                            bodyPanel.remove(i);
+                            bodyPanel.repaint();
+                            bodyPanel.revalidate();
+                        }
+                    }
+
+                    JTextArea jsonText = new JTextArea();
+                    jsonText.setBackground(Color.DARK_GRAY);
+                    bodyPanel.add(jsonText,BorderLayout.CENTER);
+                    t
+
+
+
+                }
             }
         });
 

@@ -151,17 +151,6 @@ public class Main {
                         } catch (IOException ee) {
                             ee.printStackTrace();
                         }
-                        Controller.leftSidePanel.repaint();
-                        Controller.leftSidePanel.revalidate();
-                        Controller.leftSidePanel.setVisible(true);
-                        insomniaGUI.repaint();
-                        insomniaGUI.revalidate();
-                        insomniaGUI.setVisible(true);
-                        Controller.leftSidePanel.getComponent(3).setVisible(true);
-                        for(int i =0;i<Controller.leftSidePanel.getComponents().length;i++){
-                            Controller.leftSidePanel.getComponent(i).repaint();
-                            Controller.leftSidePanel.getComponent(i).revalidate();
-                        }
                         listFrame.dispose();
 
                     }
