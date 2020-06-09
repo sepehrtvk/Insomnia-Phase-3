@@ -8,6 +8,7 @@ public class Controller {
     public static JButton savebtn;
     public static JComboBox methodsComboBox;
     public static JPanel headerPanel;
+    public static JPanel bodyNewPanel;
     public static boolean activeHeader;
     public static String uploadFile="";
 

@@ -61,6 +61,24 @@ public class Main {
                     sb.deleteCharAt(str.length() - 1);
                     argees.add(sb.toString());
                 }
+                Component[] components2 = Controller.bodyNewPanel.getComponents();
+                JCheckBox jCheckBox2 = (JCheckBox) components2[3];
+                if (jCheckBox2.isSelected()) {
+                    argees.add("-d");
+                    StringBuilder sb = new StringBuilder();
+
+                    for (int i = 1; i < components2.length; i = i + 5) {
+                        JTextField key = (JTextField) components2[i];
+                        JTextField value = (JTextField) components2[i + 1];
+                        JCheckBox jCheckBox3 = (JCheckBox) components2[i + 2];
+                        if (jCheckBox3.isSelected())
+                            sb.append(key.getText() + "=" + value.getText() + "&");
+
+                    }
+                    String str = sb.toString();
+                    sb.deleteCharAt(str.length() - 1);
+                    argees.add(sb.toString());
+                }
 
                 if(!Controller.uploadFile.equals("")){
                     argees.add("-u");
@@ -128,10 +146,7 @@ public class Main {
                             Request request = new Request(arr);
                             //write on the file.
                             FileWriter fr = new FileWriter(file, true);
-                            //input = input.replace(" --save", "");
-                            //input = input.replace(" -S", "");
                             fr.write(request.toString() + "\n");
-                            //fr.write(input + "\n");
                             fr.close();
                         } catch (IOException ee) {
                             ee.printStackTrace();
@@ -142,9 +157,11 @@ public class Main {
                         insomniaGUI.repaint();
                         insomniaGUI.revalidate();
                         insomniaGUI.setVisible(true);
-                        Controller.leftSidePanel.getComponent(3).repaint();
-                        Controller.leftSidePanel.getComponent(3).revalidate();
                         Controller.leftSidePanel.getComponent(3).setVisible(true);
+                        for(int i =0;i<Controller.leftSidePanel.getComponents().length;i++){
+                            Controller.leftSidePanel.getComponent(i).repaint();
+                            Controller.leftSidePanel.getComponent(i).revalidate();
+                        }
                         listFrame.dispose();
 
                     }

@@ -273,6 +273,7 @@ public class CenterSidePanel extends JPanel {
         bodyPanel.add(bodyNewPanel, BorderLayout.CENTER);
         bodyPanel.repaint();
         bodyPanel.revalidate();
+        Controller.bodyNewPanel=bodyNewPanel;
 
     }
 
