@@ -1,15 +1,10 @@
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * the Main class that manages the Insomnia program and shows the GUI.
@@ -35,13 +30,13 @@ public class Main {
         //show GUI.
         new InsomniaGUI();
 
+
 /**************/
 
         ArrayList<String> argees = new ArrayList<>();
         Controller.sendbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 Component[] queryPanelComponents = Controller.qeuryPanel.getComponents();
                 JCheckBox jCheckBoxQuery = (JCheckBox) queryPanelComponents[5];
                 if (jCheckBoxQuery.isSelected()) {
@@ -110,17 +105,44 @@ public class Main {
                     argees.add("-u");
                     argees.add(Controller.uploadFile);
                 }
+                JProgressBar jProgressBar = new JProgressBar(0,100);
+                JFrame jFrame = new JFrame("progress");
+                jFrame.setBounds(650, 450, 300, 110);
+                jFrame.setVisible(true);
+                JTextArea jTextArea = new JTextArea();
+                jFrame.setBackground(Color.BLACK);
+                jFrame.setResizable(false);
+                jTextArea.setEditable(false);
+                jTextArea.setBackground(Color.BLACK);
+                jTextArea.setForeground(Color.WHITE);
+                jTextArea.setText("Please Wait ... \nSending HTTP Request to "+Controller.url.getText()+"\n");
+                jProgressBar.setStringPainted(true);
+                jFrame.setLayout(new BorderLayout());
+                jProgressBar.setValue(0);
+                jProgressBar.setBorderPainted(true);
+                jProgressBar.setBackground(Color.BLACK);
+                jProgressBar.setForeground(Color.WHITE);
+                Controller.jProgressBar=jProgressBar;
+                jFrame.add(jProgressBar,BorderLayout.CENTER);
+                jFrame.add(jTextArea,BorderLayout.NORTH);
 
+                SwingWorker swingWorker = new SwingWorker() {
+                    @Override
+                    protected Object doInBackground() throws Exception {
+                        String[] arr = new String[argees.size()];
+                        arr = argees.toArray(arr);
+                        for (String str2 : arr) {
+                            System.out.println(str2);
+                        }
+                        Request request = new Request(arr);
+                        request.send();
+                        argees.clear();
+                        jFrame.dispose();
+                        return null;
+                    }
+                };
+                swingWorker.execute();
 
-                String[] arr = new String[argees.size()];
-                arr = argees.toArray(arr);
-                for (String str2 : arr) {
-                    System.out.println(str2);
-                }
-
-                Request request = new Request(arr);
-                request.send();
-                argees.clear();
 
             }
         });

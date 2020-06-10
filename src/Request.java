@@ -48,6 +48,9 @@ public class Request {
     //auto follow redirects.
     private boolean followRedirect = false;
 
+    //request sent.
+    private boolean requestSendt = false;
+
     //show headers in a request.
     private boolean showHeaders = false;
 
@@ -203,24 +206,62 @@ public class Request {
         try {
             //get time before send request.
             long beforeRequestTime = System.currentTimeMillis();
+            Controller.jProgressBar.setValue(0);
             String p = "http://";
             if (!url.contains(p)) url = p.concat(url);
             URL url = new URL(this.url);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            int i = 0;
+            while (Controller.jProgressBar.getValue() < 25) {
+
+                Controller.jProgressBar.setValue(i);
+                i++;
+                Thread.sleep(i + 5);
+            }
+
             urlConnection.setRequestMethod(method);
             urlConnection.setDoOutput(true);
             urlConnection.setInstanceFollowRedirects(followRedirect);
+            Controller.jProgressBar.setValue(50);
+
             setHeaders(urlConnection);
             setData(urlConnection);
             setFile(urlConnection);
             setJson(urlConnection);
+            int j = 50;
+            while (Controller.jProgressBar.getValue() < 75) {
+
+                Controller.jProgressBar.setValue(j);
+                j++;
+                Thread.sleep(j + 10);
+            }
+
             responseCode = urlConnection.getResponseCode();
             responseMessage = urlConnection.getResponseMessage();
             Controller.dataNumberStatus.setText(" " + responseCode + " " + responseMessage);
             Controller.bodyTabbedPane.removeAll();
+            int k = 75;
+            while (Controller.jProgressBar.getValue() < 100) {
 
-            if (responseCode == 200) Controller.dataNumberStatus.setBackground(Color.GREEN);
-            else Controller.dataNumberStatus.setBackground(Color.ORANGE);
+                Controller.jProgressBar.setValue(k);
+                k++;
+                Thread.sleep(k + 10);
+            }
+
+            switch (responseCode) {
+                case 200:
+                    Controller.dataNumberStatus.setBackground(Color.GREEN);
+                    break;
+                case 404:
+                    Controller.dataNumberStatus.setBackground(Color.RED);
+                    break;
+                case 301:
+                    Controller.dataNumberStatus.setBackground(Color.magenta);
+                    break;
+                default:
+                    Controller.dataNumberStatus.setBackground(Color.ORANGE);
+                    break;
+            }
 
             if (responseCode != 200) {
 
@@ -263,12 +304,11 @@ public class Request {
                             e.printStackTrace();
                         }
                         jep.setPage(getUrl());
-                        if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("png")||urlConnection.getHeaderField("Content-Type").toLowerCase().contains("jpg")){
+                        if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("png") || urlConnection.getHeaderField("Content-Type").toLowerCase().contains("jpg")) {
                             JLabel MYJ = new JLabel(new ImageIcon(image));
                             JScrollPane scrollPane2 = new JScrollPane(MYJ);
                             Controller.bodyTabbedPane.addTab("Preview", scrollPane2);
-                        }
-                        else {
+                        } else {
                             JScrollPane scrollPane2 = new JScrollPane(jep);
                             Controller.bodyTabbedPane.addTab("Preview", scrollPane2);
 
@@ -280,8 +320,8 @@ public class Request {
 
                     if (Controller.messageBody.getComponents().length > 1)
                         Controller.messageBody.remove(1);
-                    if(urlConnection.getHeaderField("Content-Type").toLowerCase().contains("json")){
-                        Controller.bodyTabbedPane.addTab("JSON",scrollPane );
+                    if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("json")) {
+                        Controller.bodyTabbedPane.addTab("JSON", scrollPane);
                     }
 
 
@@ -308,6 +348,8 @@ public class Request {
             }
             time = System.currentTimeMillis() - beforeRequestTime;
             Controller.dataTimeStatus.setText(time / 1000 + "." + time % 1000 + " S");
+            requestSendt = true;
+            Controller.jProgressBar.setValue(100);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -354,8 +396,10 @@ public class Request {
 
         int i = 0;
         while (urlConnection.getHeaderField(i) != null) {
-            jTextArea2.append(urlConnection.getHeaderFieldKey(i + 1) + " :      ");
-            jTextArea2.append(urlConnection.getHeaderField(i + 1) + "\n\n");
+            if(i!=0)
+            jTextArea2.append(urlConnection.getHeaderFieldKey(i) + " :      ");
+            else jTextArea2.append("\n");
+            jTextArea2.append(urlConnection.getHeaderField(i) + "\n\n");
             i++;
         }
         ((JButton) Controller.headerInRightSide.getComponent(1)).addActionListener(new ActionListener() {
@@ -397,5 +441,9 @@ public class Request {
 
     public String getUrl() {
         return url;
+    }
+
+    public boolean isRequestSendt() {
+        return requestSendt;
     }
 }
