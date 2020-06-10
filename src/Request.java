@@ -144,17 +144,6 @@ public class Request {
      */
     private void setHeaders(HttpURLConnection urlConnection) {
 
-//        Component[] components = Controller.headerPanel.getComponents();
-//
-//        if (Controller.activeHeader) {
-//            for (int i = 1; i < components.length; i = i + 5) {
-//                System.out.println("aaajajaa");
-//                JTextField key = (JTextField) components[i];
-//                JTextField value = (JTextField) components[i + 1];
-//                urlConnection.setRequestProperty(key.getText(), value.getText());
-//            }
-//        }
-
         if (!headers.equals(""))
             for (String s : headers.split(";")) {
                 String[] h = s.split(":");
@@ -251,6 +240,7 @@ public class Request {
                         response += temp + "\n";
                         temp = bufferedReader.readLine();
                     }
+
                     if (Controller.messageBody.getComponents().length == 2) Controller.messageBody.remove(1);
                     JTextArea responseField = new JTextArea(response);
                     responseField.setLineWrap(true);
@@ -258,6 +248,7 @@ public class Request {
                     responseField.setBackground(Color.lightGray);
                     responseField.setEditable(false);
                     Controller.bodyTabbedPane.addTab("Raw", scrollPane);
+
 
                     Controller.dataSizeStatus.setText(response.length() / 1000 + "." + response.length() % 1000 + " KB");
 
@@ -274,7 +265,8 @@ public class Request {
                         jep.setPage(getUrl());
                         if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("png")||urlConnection.getHeaderField("Content-Type").toLowerCase().contains("jpg")){
                             JLabel MYJ = new JLabel(new ImageIcon(image));
-                            Controller.bodyTabbedPane.addTab("Preview", MYJ);
+                            JScrollPane scrollPane2 = new JScrollPane(MYJ);
+                            Controller.bodyTabbedPane.addTab("Preview", scrollPane2);
                         }
                         else {
                             JScrollPane scrollPane2 = new JScrollPane(jep);
@@ -288,8 +280,9 @@ public class Request {
 
                     if (Controller.messageBody.getComponents().length > 1)
                         Controller.messageBody.remove(1);
-
-                    Controller.bodyTabbedPane.addTab("JSON", new JPanel());
+                    if(urlConnection.getHeaderField("Content-Type").toLowerCase().contains("json")){
+                        Controller.bodyTabbedPane.addTab("JSON",scrollPane );
+                    }
 
 
                 } else {

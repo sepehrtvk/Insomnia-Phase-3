@@ -112,6 +112,7 @@ public class InsomniaGUI extends JFrame {
         insomniaMenuBar.getDark().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Controller.theme = "dark";
                 LeftSidePanel.getFilterTextField().setBackground(Color.gray);
                 LeftSidePanel.setBackground(Color.darkGray);
                 LeftSidePanel.getList().setBackground(Color.darkGray);
@@ -121,10 +122,10 @@ public class InsomniaGUI extends JFrame {
                 Controller.messageBody.setBackground(Color.darkGray);
 
                 Component[] components = RightSidePanel.getMessageBody().getComponents();
-                for(Component component : components){
+                for (Component component : components) {
                     component.setBackground(Color.darkGray);
                 }
-
+                Controller.messageBody.setBackground(Color.darkGray);
                 CenterSidePanel.getUrlPanel().setBackground(Color.gray);
                 RightSidePanel.getRightSideTabbedPane().setBackground(Color.darkGray);
                 RightSidePanel.getStatusPanel().setBackground(Color.gray);
@@ -133,8 +134,14 @@ public class InsomniaGUI extends JFrame {
                 CenterSidePanel.getDocsPanel().setBackground(Color.darkGray);
                 CenterSidePanel.getHeaderPanel().setBackground(Color.darkGray);
                 CenterSidePanel.getTabbedPane().setBackground(Color.darkGray);
-                CenterSidePanel.getBodyPanel().getComponent(1).setBackground(Color.darkGray);
                 CenterSidePanel.getBodyPanel().setBackground(Color.darkGray);
+
+                try {
+                    CenterSidePanel.getBodyPanel().getComponent(1).setBackground(Color.darkGray);
+                } catch (ArrayIndexOutOfBoundsException exc) {
+                    //do nothing.
+                }
+
                 CenterSidePanel.getQueryPanel().setBackground(Color.darkGray);
                 CenterSidePanel.getHeaderText().setBackground(Color.gray);
                 CenterSidePanel.getNameText().setBackground(Color.gray);
@@ -147,6 +154,15 @@ public class InsomniaGUI extends JFrame {
                 for (Component compo : CenterSidePanel.getQueryPanel().getComponents()) {
                     compo.setBackground(Color.gray);
                 }
+                try {
+
+                    for (Component compo : Controller.bodyNewPanel.getComponents()) {
+                        compo.setBackground(Color.gray);
+                    }
+                } catch (NullPointerException eer) {
+                    //do nothing.
+                }
+
 
             }
         });
@@ -161,12 +177,13 @@ public class InsomniaGUI extends JFrame {
         insomniaMenuBar.getLight().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Controller.theme = "light";
                 LeftSidePanel.getFilterTextField().setBackground(Color.pink);
                 LeftSidePanel.setBackground(Color.cyan);
                 LeftSidePanel.getList().setBackground(Color.cyan);
                 RightSidePanel.setBackground(Color.cyan);
                 Component[] components = RightSidePanel.getMessageBody().getComponents();
-                for(Component component : components){
+                for (Component component : components) {
                     component.setBackground(Color.cyan);
                 }
                 Controller.messageBody.setBackground(Color.cyan);
@@ -181,7 +198,11 @@ public class InsomniaGUI extends JFrame {
                 CenterSidePanel.getHeaderPanel().setBackground(Color.cyan);
                 CenterSidePanel.getTabbedPane().setBackground(Color.cyan);
                 CenterSidePanel.getBodyPanel().setBackground(Color.cyan);
-                CenterSidePanel.getBodyPanel().getComponent(1).setBackground(Color.cyan);
+                try {
+                    CenterSidePanel.getBodyPanel().getComponent(1).setBackground(Color.cyan);
+                } catch (ArrayIndexOutOfBoundsException exc) {
+                    //do nothing.
+                }
                 CenterSidePanel.getQueryPanel().setBackground(Color.cyan);
                 CenterSidePanel.getHeaderText().setBackground(Color.pink);
                 CenterSidePanel.getNameText().setBackground(Color.pink);
@@ -194,6 +215,14 @@ public class InsomniaGUI extends JFrame {
                 for (Component compo : CenterSidePanel.getQueryPanel().getComponents()) {
                     compo.setBackground(Color.PINK);
                 }
+                try {
+                    for (Component compo : Controller.bodyNewPanel.getComponents()) {
+                        compo.setBackground(Color.PINK);
+                    }
+                } catch (NullPointerException ee) {
+                    //do nothing.
+                }
+
 
             }
         });

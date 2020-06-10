@@ -113,6 +113,8 @@ public class CenterSidePanel extends JPanel {
 
     private boolean activeHeader = false;
 
+    private String theme = "dark";
+
     /**
      * the constructor makes the center panel with it parts.
      */
@@ -141,7 +143,7 @@ public class CenterSidePanel extends JPanel {
         initDocsTab();
 
         Controller.centerSidePanel = this;
-
+        Controller.theme = theme;
     }
 
     /**
@@ -164,7 +166,7 @@ public class CenterSidePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if ((bodyTypeComboBox.getSelectedItem()).equals("Binary Data")) {
-                    Controller.formData=false;
+                    Controller.formData = false;
                     if (bodyPanel.getComponents().length > 1) {
                         for (int i = 1; i < bodyPanel.getComponents().length; i++) {
                             bodyPanel.remove(i);
@@ -178,17 +180,21 @@ public class CenterSidePanel extends JPanel {
                     jFileChooser.showOpenDialog(new JFrame());
                     File binaryFile = jFileChooser.getSelectedFile();
                     SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-                    JTextArea jTextField = new JTextArea("* File Name : " + binaryFile.getName() + "\n* File Path : " + binaryFile.getAbsolutePath() + "\n* Last Modified : " + sdf.format(binaryFile.lastModified()) + "\n* Size : " + binaryFile.length() + " bytes");
-                    jTextField.setEditable(false);
-                    jTextField.setBackground(Color.lightGray);
-                    Controller.uploadFile = binaryFile.getName();
-                    if (bodyPanel.getComponents().length > 1) bodyPanel.remove(1);
-                    bodyPanel.add(jTextField, BorderLayout.CENTER);
-                    bodyPanel.repaint();
-                    bodyPanel.revalidate();
+                    try {
+                        JTextArea jTextField = new JTextArea("* File Name : " + binaryFile.getName() + "\n* File Path : " + binaryFile.getAbsolutePath() + "\n* Last Modified : " + sdf.format(binaryFile.lastModified()) + "\n* Size : " + binaryFile.length() + " bytes");
+                        jTextField.setEditable(false);
+                        jTextField.setBackground(Color.lightGray);
+                        Controller.uploadFile = binaryFile.getName();
+                        if (bodyPanel.getComponents().length > 1) bodyPanel.remove(1);
+                        bodyPanel.add(jTextField, BorderLayout.CENTER);
+                        bodyPanel.repaint();
+                        bodyPanel.revalidate();
+                    } catch (NullPointerException ee) {
+                        //cancel choosing file.
+                    }
                 }
                 if ((bodyTypeComboBox.getSelectedItem()).equals("Form Data")) {
-                    Controller.formData=true;
+                    Controller.formData = true;
                     Controller.uploadFile = "";
                     if (bodyPanel.getComponents().length > 1) {
                         for (int i = 1; i < bodyPanel.getComponents().length; i++) {
@@ -200,7 +206,7 @@ public class CenterSidePanel extends JPanel {
                     initFormData();
                 }
                 if ((bodyTypeComboBox.getSelectedItem()).equals("No Body")) {
-                    Controller.formData=false;
+                    Controller.formData = false;
                     Controller.uploadFile = "";
                     if (bodyPanel.getComponents().length > 1) {
                         for (int i = 1; i < bodyPanel.getComponents().length; i++) {
@@ -212,7 +218,7 @@ public class CenterSidePanel extends JPanel {
 
                 }
                 if ((bodyTypeComboBox.getSelectedItem()).equals("JSON")) {
-                    Controller.formData=false;
+                    Controller.formData = false;
                     Controller.uploadFile = "";
                     if (bodyPanel.getComponents().length > 1) {
                         for (int i = 1; i < bodyPanel.getComponents().length; i++) {
@@ -223,10 +229,13 @@ public class CenterSidePanel extends JPanel {
                     }
 
                     jsonText = new JTextArea();
-                    jsonText.setBackground(Color.DARK_GRAY);
+                    if (Controller.theme.equals("dark"))
+                        jsonText.setBackground(Color.DARK_GRAY);
+                    else jsonText.setBackground(Color.cyan);
                     bodyPanel.add(jsonText, BorderLayout.CENTER);
                     Controller.jsonText = jsonText;
-
+                    bodyPanel.repaint();
+                    bodyPanel.revalidate();
 
                 }
             }
@@ -244,7 +253,9 @@ public class CenterSidePanel extends JPanel {
 
         bodyNewPanel = new JPanel();
         bodyNewPanel.setName("bodyNewPanel");
-        bodyNewPanel.setBackground(Color.DARK_GRAY);
+        if (Controller.theme.equals("dark"))
+            bodyNewPanel.setBackground(Color.DARK_GRAY);
+        else bodyNewPanel.setBackground(Color.cyan);
         GridBagLayout gbl_bodyPanel = new GridBagLayout();
         bodyNewPanel.setLayout(gbl_bodyPanel);
 
@@ -259,7 +270,9 @@ public class CenterSidePanel extends JPanel {
         bodyNewPanel.add(lineLabel2, gbc);
 
         nameText = new JTextField(15);
-        nameText.setBackground(Color.GRAY);
+        if (Controller.theme.equals("dark"))
+            nameText.setBackground(Color.GRAY);
+        else nameText.setBackground(Color.pink);
         nameText.setText("New Name");
         nameText.addMouseListener(new MouseActionClass(formDataCounter, bodyNewPanel));
 
@@ -270,7 +283,9 @@ public class CenterSidePanel extends JPanel {
         bodyNewPanel.add(nameText, gbc);
 
         newValueText = new JTextField(15);
-        newValueText.setBackground(Color.GRAY);
+        if (Controller.theme.equals("dark"))
+            newValueText.setBackground(Color.GRAY);
+        else newValueText.setBackground(Color.pink);
         newValueText.setText("New Value");
 
         gbc.fill = GridBagConstraints.BOTH;
@@ -364,7 +379,7 @@ public class CenterSidePanel extends JPanel {
         gbc.gridx = 2;
         gbc.gridy = 1;
         queryPanel.add(nameText, gbc);
-        Controller.qeuryPanel=queryPanel;
+        Controller.qeuryPanel = queryPanel;
 
         newValueText = new JTextField(15);
         newValueText.setBackground(Color.GRAY);
