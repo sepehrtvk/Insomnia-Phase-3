@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -79,10 +81,14 @@ public class LeftSidePanel extends JPanel {
             }
         }
         list.addListSelectionListener(new ListSelectionListener() {
-            int counter=0;
+            int counter = 0;
+
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                if(counter!=0){counter=0; return;}
+                if (counter != 0) {
+                    counter = 0;
+                    return;
+                }
                 System.out.println(list.getSelectedValue());
                 String[] args = new String[3];
                 args[0] = "-fire";
@@ -98,7 +104,7 @@ public class LeftSidePanel extends JPanel {
                     while (sc.hasNext()) {
                         jTextArea.append(i + ": " + sc.nextLine());
                         i++;
-                        if(sc.hasNext())sc.nextLine();
+                        if (sc.hasNext()) sc.nextLine();
                     }
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
@@ -140,6 +146,43 @@ public class LeftSidePanel extends JPanel {
         newRequestBtn.setBounds(214, 55, 39, 29);
         newRequestBtn.setFont(new Font("Plantagenet Cherokee", Font.PLAIN, 15));
         add(newRequestBtn);
+        newRequestBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JFrame jFrame = new JFrame("Make New Request List ");
+                jFrame.setBounds(650, 450, 300, 200);
+                jFrame.setVisible(true);
+                jFrame.setLayout(new BorderLayout());
+                JTextField jTextField = new JTextField("type here...");
+                JButton jButton = new JButton("Add");
+                jFrame.add(jTextField, BorderLayout.CENTER);
+                jFrame.add(jButton, BorderLayout.SOUTH);
+
+                jButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        File file = new File("Requests/" + jTextField.getText());
+                        FileWriter fr;
+                        System.out.println("List " + jTextField.getText() + " created.");
+                        try {
+                            fr = new FileWriter(file);
+                            fr.write("");
+                            fr.close();
+
+                        } catch (IOException er) {
+                            er.printStackTrace();
+                        }
+                        jFrame.dispose();
+                    }
+                });
+
+            }
+        });
+        list.repaint();
+        list.revalidate();
+        revalidate();
+        repaint();
         Controller.leftSidePanel = this;
     }
 
