@@ -206,23 +206,36 @@ public class Request {
         try {
             //get time before send request.
             long beforeRequestTime = System.currentTimeMillis();
-            Controller.jProgressBar.setValue(0);
+            try {
+                Controller.jProgressBar.setValue(0);
+            } catch (NullPointerException n) {
+                //do nothing.
+            }
             String p = "http://";
             if (!url.contains(p)) url = p.concat(url);
             URL url = new URL(this.url);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            int i = 0;
-            while (Controller.jProgressBar.getValue() < 25) {
+            try {
+                int i = 0;
+                while (Controller.jProgressBar.getValue() < 25) {
 
-                Controller.jProgressBar.setValue(i);
-                i++;
-                Thread.sleep(i + 5);
+                    Controller.jProgressBar.setValue(i);
+                    i++;
+                    Thread.sleep(i + 5);
+                }
+            } catch (NullPointerException n) {
+                //do nothing.
             }
 
             urlConnection.setRequestMethod(method);
             urlConnection.setDoOutput(true);
             urlConnection.setInstanceFollowRedirects(followRedirect);
-            Controller.jProgressBar.setValue(50);
+            try {
+                Controller.jProgressBar.setValue(50);
+            } catch (NullPointerException n) {
+                //do nothing.
+            }
+
 
             setHeaders(urlConnection);
             setData(urlConnection);
@@ -240,14 +253,16 @@ public class Request {
             responseMessage = urlConnection.getResponseMessage();
             Controller.dataNumberStatus.setText(" " + responseCode + " " + responseMessage);
             Controller.bodyTabbedPane.removeAll();
-            int k = 75;
-            while (Controller.jProgressBar.getValue() < 100) {
-
-                Controller.jProgressBar.setValue(k);
-                k++;
-                Thread.sleep(k + 10);
+            try {
+                int k = 75;
+                while (Controller.jProgressBar.getValue() < 100) {
+                    Controller.jProgressBar.setValue(k);
+                    k++;
+                    Thread.sleep(k + 10);
+                }
+            } catch (NullPointerException n) {
+                //do nothing.
             }
-
             switch (responseCode) {
                 case 200:
                     Controller.dataNumberStatus.setBackground(Color.GREEN);
@@ -357,7 +372,12 @@ public class Request {
             time = System.currentTimeMillis() - beforeRequestTime;
             Controller.dataTimeStatus.setText(time / 1000 + "." + time % 1000 + " S");
             requestSendt = true;
-            Controller.jProgressBar.setValue(100);
+            try {
+                Controller.jProgressBar.setValue(100);
+            } catch (NullPointerException n) {
+                //do nothing.
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();
