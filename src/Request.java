@@ -316,25 +316,33 @@ public class Request {
                     } catch (IOException ee) {
                         jep.setContentType("text/html");
                         jep.setText("<html>Could not load</html>");
+                    } catch (NullPointerException nu) {
+                        //no photo.
                     }
 
                     if (Controller.messageBody.getComponents().length > 1)
                         Controller.messageBody.remove(1);
-                    if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("json")) {
-                        Controller.bodyTabbedPane.addTab("JSON", scrollPane);
+                    try {
+                        if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("json")) {
+                            Controller.bodyTabbedPane.addTab("JSON", scrollPane);
+                        }
+                    } catch (NullPointerException nu) {
+                        //no photo.
                     }
-
-
                 } else {
-                    if (!output.contains(".")) {
-                        if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("png"))
-                            output += ".png";
-                        else if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("html"))
-                            output += ".html";
-                        else if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("jpg"))
-                            output += ".jpg";
-                        else if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("txt"))
-                            output += ".txt";
+                    try {
+                        if (!output.contains(".")) {
+                            if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("png"))
+                                output += ".png";
+                            else if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("html"))
+                                output += ".html";
+                            else if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("jpg"))
+                                output += ".jpg";
+                            else if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("txt"))
+                                output += ".txt";
+                        }
+                    } catch (NullPointerException nu) {
+                        //no photo.
                     }
                     FileOutputStream file = new FileOutputStream(new File(output));
                     InputStream inputStream = urlConnection.getInputStream();
@@ -396,9 +404,9 @@ public class Request {
 
         int i = 0;
         while (urlConnection.getHeaderField(i) != null) {
-            if(i!=0)
-            jTextArea2.append(urlConnection.getHeaderFieldKey(i) + " :      ");
-            else jTextArea2.append("\n");
+            if (i != 0)
+                jTextArea2.append(urlConnection.getHeaderFieldKey(i) + " :      ");
+            else jTextArea2.append("     \n");
             jTextArea2.append(urlConnection.getHeaderField(i) + "\n\n");
             i++;
         }

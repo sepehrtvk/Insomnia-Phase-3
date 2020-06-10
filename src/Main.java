@@ -107,15 +107,16 @@ public class Main {
                 }
                 JProgressBar jProgressBar = new JProgressBar(0,100);
                 JFrame jFrame = new JFrame("progress");
-                jFrame.setBounds(650, 450, 300, 110);
+                jFrame.setBounds(650, 450, 300, 120);
                 jFrame.setVisible(true);
                 JTextArea jTextArea = new JTextArea();
                 jFrame.setBackground(Color.BLACK);
                 jFrame.setResizable(false);
                 jTextArea.setEditable(false);
+                jTextArea.setLineWrap(true);
                 jTextArea.setBackground(Color.BLACK);
                 jTextArea.setForeground(Color.WHITE);
-                jTextArea.setText("Please Wait ... \nSending HTTP Request to "+Controller.url.getText()+"\n");
+                jTextArea.setText("Please Wait ... \nSending HTTP Request to \n"+Controller.url.getText()+"\n");
                 jProgressBar.setStringPainted(true);
                 jFrame.setLayout(new BorderLayout());
                 jProgressBar.setValue(0);
