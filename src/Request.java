@@ -247,7 +247,7 @@ public class Request {
                     j++;
                     Thread.sleep(j + 10);
                 }
-            }catch (NullPointerException n){
+            } catch (NullPointerException n) {
                 //do nothing.
             }
 
@@ -255,6 +255,7 @@ public class Request {
             responseMessage = urlConnection.getResponseMessage();
             Controller.dataNumberStatus.setText(" " + responseCode + " " + responseMessage);
             Controller.bodyTabbedPane.removeAll();
+            System.out.println(responseCode + " " + responseMessage);
             try {
                 int k = 75;
                 while (Controller.jProgressBar.getValue() < 100) {
@@ -298,6 +299,7 @@ public class Request {
                         response += temp + "\n";
                         temp = bufferedReader.readLine();
                     }
+                    System.out.println(response);
 
                     if (Controller.messageBody.getComponents().length == 2) Controller.messageBody.remove(1);
                     JTextArea responseField = new JTextArea(response);
@@ -426,10 +428,12 @@ public class Request {
 
         int i = 0;
         while (urlConnection.getHeaderField(i) != null) {
-            if (i != 0)
+            if (i != 0) {
+                System.out.print("\u001B[32m" + urlConnection.getHeaderFieldKey(i) + ": " + "\u001B[0m");
                 jTextArea2.append(urlConnection.getHeaderFieldKey(i) + " :      ");
-            else jTextArea2.append("     \n");
+            } else jTextArea2.append("     \n");
             jTextArea2.append(urlConnection.getHeaderField(i) + "\n\n");
+            System.out.println(urlConnection.getHeaderField(i));
             i++;
         }
         ((JButton) Controller.headerInRightSide.getComponent(1)).addActionListener(new ActionListener() {
