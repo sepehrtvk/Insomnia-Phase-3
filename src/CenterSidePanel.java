@@ -546,6 +546,7 @@ public class CenterSidePanel extends JPanel {
         sendBtn = new JButton("SEND");
         sendBtn.setPreferredSize(new Dimension(80, 27));
         sendBtn.setBackground(Color.WHITE);
+        sendBtn.addActionListener(new SendButtonAction());
         Controller.sendbtn = sendBtn;
 
         saveBtn = new JButton("SAVE");

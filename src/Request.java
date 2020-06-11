@@ -235,18 +235,20 @@ public class Request {
             } catch (NullPointerException n) {
                 //do nothing.
             }
-
-
             setHeaders(urlConnection);
             setData(urlConnection);
             setFile(urlConnection);
             setJson(urlConnection);
-            int j = 50;
-            while (Controller.jProgressBar.getValue() < 75) {
+            try {
+                int j = 50;
+                while (Controller.jProgressBar.getValue() < 75) {
 
-                Controller.jProgressBar.setValue(j);
-                j++;
-                Thread.sleep(j + 10);
+                    Controller.jProgressBar.setValue(j);
+                    j++;
+                    Thread.sleep(j + 10);
+                }
+            }catch (NullPointerException n){
+                //do nothing.
             }
 
             responseCode = urlConnection.getResponseCode();
