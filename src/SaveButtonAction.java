@@ -57,12 +57,28 @@ public class SaveButtonAction implements ActionListener {
                 }
                 File file = new File("Requests/" + jTextField.getText());
 
-
                 try {
                     Request request = new Request(arr);
                     //write on the file.
                     FileWriter fr = new FileWriter(file, true);
                     fr.write(request.toString() + "\n");
+                    String command = Controller.url.getText() + " -M " +
+                            Controller.methodsComboBox.getSelectedItem().toString() +
+                            (Controller.followRedirect.isSelected()?" -f ":"");
+                    String headers = " -H ";
+                    for(int i = 1;i < Controller.headerPanel.getComponents().length;i+=5)
+                    {
+                        JTextField key = (JTextField) Controller.headerPanel.getComponents()[i];
+                        JTextField value = (JTextField) Controller.headerPanel.getComponents()[i + 1];
+                        JCheckBox jCheckBox2 = (JCheckBox) Controller.headerPanel.getComponents()[i + 2];
+                        if (jCheckBox2.isSelected())
+                            headers += key.getText() + ":" + value.getText() + ";";
+                    }
+                    headers = headers.substring(0,headers.length()-1);
+                    if(!headers.equals(" -H"))
+                    command += headers;
+
+                    fr.write(command);
                     fr.close();
                 } catch (IOException ee) {
                     ee.printStackTrace();

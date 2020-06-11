@@ -37,6 +37,30 @@ public class Main {
         //list , fire and help commands.
         if (args[0].toLowerCase().contains("list") || args[0].toLowerCase().contains("fire") || args[0].toLowerCase().equals("-h") || args[0].toLowerCase().equals("--help")) {
 
+            if (args[0].toLowerCase().equals("-h") || args[0].toLowerCase().equals("--help")) {
+                try {
+                    BufferedReader bufferedReader = new BufferedReader(new FileReader("help.txt"));
+
+                    String line;
+                    StringBuffer sb = new StringBuffer();
+
+                    while ((line = bufferedReader.readLine()) != null) {
+                        sb.append(line);
+                        sb.append("\n");
+                    }
+
+                    System.out.println("\u001B[34m" + sb.toString() + "\u001B[0m");
+                    bufferedReader.close();
+
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                    System.out.println("help.txt file is not exist.");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return;
+            }
+
             //list command to show request groups.
             if (args[0].toLowerCase().contains("list")) {
 
@@ -70,7 +94,6 @@ public class Main {
                 for (String arg : args) {
                     if (arg.contains("fire")) continue;
                     try {
-
                         Scanner sc = new Scanner(new File("Requests/" + args[1]));
                         for (int i = 1; i < Integer.parseInt(args[2 + counter]); i++) {
                             sc.nextLine();
@@ -89,28 +112,6 @@ public class Main {
                 }
             }
             //-h or --help commands to see the help manual.
-            if (args[0].toLowerCase().equals("-h") || args[0].toLowerCase().equals("--help")) {
-                try {
-                    BufferedReader bufferedReader = new BufferedReader(new FileReader("help.txt"));
-
-                    String line;
-                    StringBuffer sb = new StringBuffer();
-
-                    while ((line = bufferedReader.readLine()) != null) {
-                        sb.append(line);
-                        sb.append("\n");
-                    }
-
-                    System.out.println("\u001B[34m" + sb.toString() + "\u001B[0m");
-                    bufferedReader.close();
-
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                    System.out.println("help.txt file is not exist.");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         } else {
 
             //make a new request.

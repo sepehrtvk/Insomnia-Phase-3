@@ -14,6 +14,8 @@ import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 /**
  * The Request class used to send a HTTP request using HTTPUrlConnection in java.
@@ -133,13 +135,21 @@ public class Request {
                 }
                 //json data.
                 if (arg.equals("--json") || arg.equals("-j")) {
-
-                    json = args[i + 1];
+                    json = "";
+                    i++;
+                    while(i < args.length && !args[i].startsWith("-"))
+                    {
+                        json += args[i] + " ";
+                        i++;
+                    }
+                    json = json.substring(1,json.length()-2);
                 }
             }
         }
     }
 
+    //http://apapi.haditabatabaei.ir/tests/post/json --method POST --json "{"name": "Upendra", "job": "Programmer"}"
+    //http://webhook.site/360acbdd-a04d-4817-9593-e6e11cddf458 --method POST --json "{"name": "Upendra", "job": "Programmer"}"
     /**
      * this setHeaders method sets headers for each request with the given connection.
      *
@@ -184,14 +194,19 @@ public class Request {
      */
     private void setJson(HttpURLConnection urlConnection) throws IOException {
         if (!json.equals("")) {
-            byte[] postData = data.getBytes(StandardCharsets.UTF_8);
-            int postDataLength = postData.length;
+//            JSONObject parent=new JSONObject();
+//            urlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+//            urlConnection.setRequestProperty("Accept", "application/json");
+//            parent.put("name","mamad");
+//            System.out.println(parent);
+//            OutputStreamWriter wr= new OutputStreamWriter(urlConnection.getOutputStream());
+//            wr.write(parent.toString());
+//            wr.flush();
+//            System.out.println(json);
+
+            byte[] postData = json.getBytes(StandardCharsets.UTF_8);
             urlConnection.setDoOutput(true);
-            urlConnection.setInstanceFollowRedirects(false);
-            urlConnection.setRequestProperty("Content-Type", "application/json; utf-8");
-            urlConnection.setRequestProperty("charset", "utf-8");
-            urlConnection.setRequestProperty("Content-Length", Integer.toString(postDataLength));
-            urlConnection.setUseCaches(false);
+            urlConnection.setRequestProperty("Content-Type", "application/json");
             try (DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream())) {
                 wr.write(postData);
             }
@@ -320,7 +335,7 @@ public class Request {
                         try {
                             image = ImageIO.read(url);
                         } catch (IOException e) {
-                            e.printStackTrace();
+                           //do nothing.
                         }
                         jep.setPage(getUrl());
                         if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("png") || urlConnection.getHeaderField("Content-Type").toLowerCase().contains("jpg")) {
