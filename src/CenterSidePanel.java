@@ -547,12 +547,11 @@ public class CenterSidePanel extends JPanel {
         sendBtn.setPreferredSize(new Dimension(80, 27));
         sendBtn.setBackground(Color.WHITE);
         sendBtn.addActionListener(new SendButtonAction());
-        Controller.sendbtn = sendBtn;
 
         saveBtn = new JButton("SAVE");
         saveBtn.setPreferredSize(new Dimension(80, 27));
         saveBtn.setBackground(Color.WHITE);
-        Controller.savebtn = saveBtn;
+        saveBtn.addActionListener(new SaveButtonAction());
 
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.anchor = GridBagConstraints.NORTH;
