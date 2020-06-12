@@ -14,7 +14,7 @@ public class SendButtonAction implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Component[] queryPanelComponents = Controller.qeuryPanel.getComponents();
+        Component[] queryPanelComponents = Controller.queryPanel.getComponents();
         JCheckBox jCheckBoxQuery = (JCheckBox) queryPanelComponents[5];
         if (jCheckBoxQuery.isSelected()) {
 
@@ -82,6 +82,10 @@ public class SendButtonAction implements ActionListener {
             argees.add("-u");
             argees.add(Controller.uploadFile);
         }
+        if(Controller.json){
+            argees.add("--json");
+            argees.add(Controller.jsonText.getText());
+        }
         JProgressBar jProgressBar = new JProgressBar(0, 100);
         JFrame jFrame = new JFrame("progress");
         jFrame.setBounds(650, 450, 300, 120);
@@ -109,9 +113,6 @@ public class SendButtonAction implements ActionListener {
             protected Object doInBackground() throws Exception {
                 String[] arr = new String[argees.size()];
                 arr = argees.toArray(arr);
-                for (String str2 : arr) {
-                    System.out.println(str2);
-                }
                 Request request = new Request(arr);
                 request.send();
                 argees.clear();

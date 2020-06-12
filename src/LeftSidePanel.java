@@ -32,8 +32,10 @@ public class LeftSidePanel extends JPanel {
     //new request button.
     private JButton newRequestBtn;
 
+    //request sign.
     private JLabel requestLabel;
 
+    //list of the requests.
     private JList<String> list;
 
     /**
@@ -89,7 +91,6 @@ public class LeftSidePanel extends JPanel {
                     counter = 0;
                     return;
                 }
-                System.out.println(list.getSelectedValue());
                 String[] args = new String[3];
                 args[0] = "-fire";
                 args[1] = list.getSelectedValue();
@@ -119,15 +120,46 @@ public class LeftSidePanel extends JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         try {
-
+                            String savedUrl=" ";
                             Scanner sc = new Scanner(new File("Requests/" + args[1]));
                             for (int i = 1; i < Integer.parseInt(jTextField.getText()); i++) {
-                                sc.nextLine();
+                                savedUrl=sc.nextLine();
                                 sc.nextLine();
                             }
                             sc.nextLine();
-                            Request request = new Request(sc.nextLine().split("\\s+"));
-                            request.send();
+
+                            JProgressBar jProgressBar = new JProgressBar(0, 100);
+                            JFrame jFrame = new JFrame("progress");
+                            jFrame.setBounds(650, 450, 300, 120);
+                            jFrame.setVisible(true);
+                            JTextArea jTextArea = new JTextArea();
+                            jFrame.setBackground(Color.BLACK);
+                            jFrame.setResizable(false);
+                            jTextArea.setEditable(false);
+                            jTextArea.setLineWrap(true);
+                            jTextArea.setBackground(Color.BLACK);
+                            jTextArea.setForeground(Color.WHITE);
+                            jTextArea.setText("Please Wait ... \nSending HTTP Request from saved requests. \n"+savedUrl);
+                            jProgressBar.setStringPainted(true);
+                            jFrame.setLayout(new BorderLayout());
+                            jProgressBar.setValue(0);
+                            jProgressBar.setBorderPainted(true);
+                            jProgressBar.setBackground(Color.BLACK);
+                            jProgressBar.setForeground(Color.WHITE);
+                            Controller.jProgressBar = jProgressBar;
+                            jFrame.add(jProgressBar, BorderLayout.CENTER);
+                            jFrame.add(jTextArea, BorderLayout.NORTH);
+
+                            SwingWorker swingWorker = new SwingWorker() {
+                                @Override
+                                protected Object doInBackground() throws Exception {
+                                    Request request = new Request(sc.nextLine().split("\\s+"));
+                                    request.send();
+                                    jFrame.dispose();
+                                    return null;
+                                }
+                            };
+                            swingWorker.execute();
                         } catch (FileNotFoundException ex) {
                             ex.printStackTrace();
                         }
@@ -139,7 +171,6 @@ public class LeftSidePanel extends JPanel {
 
         });
         add(list);
-
 
         //make new request button.
         newRequestBtn = new JButton("✚");
@@ -206,9 +237,21 @@ public class LeftSidePanel extends JPanel {
         return newRequestBtn;
     }
 
+    /**
+     * get the request list.
+     *
+     * @return request list.
+     */
+
     public JList<String> getList() {
         return list;
     }
+
+    /**
+     * get the request label.
+     *
+     * @return request label.
+     */
 
     public JLabel getRequestLabel() {
         return requestLabel;

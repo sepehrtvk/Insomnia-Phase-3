@@ -8,14 +8,11 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 /**
  * The Request class used to send a HTTP request using HTTPUrlConnection in java.
@@ -51,7 +48,7 @@ public class Request {
     private boolean followRedirect = false;
 
     //request sent.
-    private boolean requestSendt = false;
+    private boolean requestSent = false;
 
     //show headers in a request.
     private boolean showHeaders = false;
@@ -137,19 +134,16 @@ public class Request {
                 if (arg.equals("--json") || arg.equals("-j")) {
                     json = "";
                     i++;
-                    while(i < args.length && !args[i].startsWith("-"))
-                    {
+                    while (i < args.length && !args[i].startsWith("-")) {
                         json += args[i] + " ";
                         i++;
                     }
-                    json = json.substring(1,json.length()-2);
+                    json = json.substring(1, json.length() - 2);
                 }
             }
         }
     }
 
-    //http://apapi.haditabatabaei.ir/tests/post/json --method POST --json "{"name": "Upendra", "job": "Programmer"}"
-    //http://webhook.site/360acbdd-a04d-4817-9593-e6e11cddf458 --method POST --json "{"name": "Upendra", "job": "Programmer"}"
     /**
      * this setHeaders method sets headers for each request with the given connection.
      *
@@ -194,16 +188,6 @@ public class Request {
      */
     private void setJson(HttpURLConnection urlConnection) throws IOException {
         if (!json.equals("")) {
-//            JSONObject parent=new JSONObject();
-//            urlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-//            urlConnection.setRequestProperty("Accept", "application/json");
-//            parent.put("name","mamad");
-//            System.out.println(parent);
-//            OutputStreamWriter wr= new OutputStreamWriter(urlConnection.getOutputStream());
-//            wr.write(parent.toString());
-//            wr.flush();
-//            System.out.println(json);
-
             byte[] postData = json.getBytes(StandardCharsets.UTF_8);
             urlConnection.setDoOutput(true);
             urlConnection.setRequestProperty("Content-Type", "application/json");
@@ -335,7 +319,7 @@ public class Request {
                         try {
                             image = ImageIO.read(url);
                         } catch (IOException e) {
-                           //do nothing.
+                            //do nothing.
                         }
                         jep.setPage(getUrl());
                         if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("png") || urlConnection.getHeaderField("Content-Type").toLowerCase().contains("jpg")) {
@@ -358,7 +342,13 @@ public class Request {
                         Controller.messageBody.remove(1);
                     try {
                         if (urlConnection.getHeaderField("Content-Type").toLowerCase().contains("json")) {
-                            Controller.bodyTabbedPane.addTab("JSON", scrollPane);
+                            String str1 = response.replace("{", "");
+                            String str2 = str1.replace("}", "");
+                            String str3 = str2.replace(",", "\n");
+                            JTextArea jsonText = new JTextArea(str3);
+                            JScrollPane json = new JScrollPane(jsonText);
+                            Controller.bodyTabbedPane.addTab("JSON", json);
+
                         }
                     } catch (NullPointerException nu) {
                         //no photo.
@@ -390,7 +380,7 @@ public class Request {
             }
             time = System.currentTimeMillis() - beforeRequestTime;
             Controller.dataTimeStatus.setText(time / 1000 + "." + time % 1000 + " S");
-            requestSendt = true;
+            requestSent = true;
             try {
                 Controller.jProgressBar.setValue(100);
             } catch (NullPointerException n) {
@@ -488,11 +478,13 @@ public class Request {
                 (data.equals("") ? "" : (", data='" + data + '\''));
     }
 
+    /**
+     * get the url.
+     *
+     * @return url.
+     */
     public String getUrl() {
         return url;
     }
 
-    public boolean isRequestSendt() {
-        return requestSendt;
-    }
 }

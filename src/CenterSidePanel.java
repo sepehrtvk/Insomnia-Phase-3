@@ -111,8 +111,10 @@ public class CenterSidePanel extends JPanel {
     //counter of header and value.
     private int formDataCounter = 2;
 
+    //active header checkBox.
     private boolean activeHeader = false;
 
+    //current theme of the GUU.
     private String theme = "dark";
 
     /**
@@ -142,6 +144,7 @@ public class CenterSidePanel extends JPanel {
         initUrlPanel();
         initDocsTab();
 
+        //add panel to Controller class.
         Controller.centerSidePanel = this;
         Controller.theme = theme;
     }
@@ -166,6 +169,7 @@ public class CenterSidePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if ((bodyTypeComboBox.getSelectedItem()).equals("Binary Data")) {
+                    Controller.json=false;
                     Controller.formData = false;
                     if (bodyPanel.getComponents().length > 1) {
                         for (int i = 1; i < bodyPanel.getComponents().length; i++) {
@@ -194,6 +198,7 @@ public class CenterSidePanel extends JPanel {
                     }
                 }
                 if ((bodyTypeComboBox.getSelectedItem()).equals("Form Data")) {
+                    Controller.json=false;
                     Controller.formData = true;
                     Controller.uploadFile = "";
                     if (bodyPanel.getComponents().length > 1) {
@@ -206,6 +211,7 @@ public class CenterSidePanel extends JPanel {
                     initFormData();
                 }
                 if ((bodyTypeComboBox.getSelectedItem()).equals("No Body")) {
+                    Controller.json=false;
                     Controller.formData = false;
                     Controller.uploadFile = "";
                     if (bodyPanel.getComponents().length > 1) {
@@ -218,6 +224,7 @@ public class CenterSidePanel extends JPanel {
 
                 }
                 if ((bodyTypeComboBox.getSelectedItem()).equals("JSON")) {
+                    Controller.json=true;
                     Controller.formData = false;
                     Controller.uploadFile = "";
                     if (bodyPanel.getComponents().length > 1) {
@@ -236,8 +243,8 @@ public class CenterSidePanel extends JPanel {
                     Controller.jsonText = jsonText;
                     bodyPanel.repaint();
                     bodyPanel.revalidate();
-
                 }
+
             }
         });
 
@@ -379,7 +386,7 @@ public class CenterSidePanel extends JPanel {
         gbc.gridx = 2;
         gbc.gridy = 1;
         queryPanel.add(nameText, gbc);
-        Controller.qeuryPanel = queryPanel;
+        Controller.queryPanel = queryPanel;
 
         newValueText = new JTextField(15);
         newValueText.setBackground(Color.GRAY);

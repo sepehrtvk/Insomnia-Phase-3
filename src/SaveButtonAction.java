@@ -42,7 +42,7 @@ public class SaveButtonAction implements ActionListener {
         OKBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Component[] queryPanelComponents = Controller.qeuryPanel.getComponents();
+                Component[] queryPanelComponents = Controller.queryPanel.getComponents();
                 JCheckBox jCheckBoxQuery = (JCheckBox) queryPanelComponents[5];
                 if (jCheckBoxQuery.isSelected()) {
 
