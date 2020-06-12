@@ -130,7 +130,7 @@ public class LeftSidePanel extends JPanel {
 
                             JProgressBar jProgressBar = new JProgressBar(0, 100);
                             JFrame jFrame = new JFrame("progress");
-                            jFrame.setBounds(650, 450, 300, 120);
+                            jFrame.setBounds(650, 450, 330, 120);
                             jFrame.setVisible(true);
                             JTextArea jTextArea = new JTextArea();
                             jFrame.setBackground(Color.BLACK);

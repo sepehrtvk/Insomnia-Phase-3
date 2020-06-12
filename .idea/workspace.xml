@@ -10,10 +10,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/Request$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/Request$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/Request.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Midterm Project/RightSidePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm Project/RightSidePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CenterSidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CenterSidePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SendButtonAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SendButtonAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LeftSidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LeftSidePanel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,6 +24,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/LeftSidePanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="132" column="57" selection-start-line="132" selection-start-column="57" selection-end-line="132" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#8994#8995#0" expanded="true" />
+                <element signature="e#9032#9033#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SaveButtonAction.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -53,7 +64,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Request.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="473">
@@ -83,8 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+            <state relative-caret-position="424">
+              <caret line="42" column="35" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -185,11 +196,11 @@
         <option value="$PROJECT_DIR$/src/RightSidePanel.java" />
         <option value="$PROJECT_DIR$/src/InsomniaMenuBar.java" />
         <option value="$PROJECT_DIR$/src/SaveButtonAction.java" />
-        <option value="$PROJECT_DIR$/src/LeftSidePanel.java" />
         <option value="$PROJECT_DIR$/src/Request.java" />
         <option value="$PROJECT_DIR$/src/Controller.java" />
         <option value="$PROJECT_DIR$/src/CenterSidePanel.java" />
         <option value="$PROJECT_DIR$/src/SendButtonAction.java" />
+        <option value="$PROJECT_DIR$/src/LeftSidePanel.java" />
       </list>
     </option>
   </component>
@@ -307,14 +318,7 @@
       <workItem from="1591906323437" duration="3250000" />
       <workItem from="1591960680203" duration="7170000" />
       <workItem from="1591973878278" duration="311000" />
-      <workItem from="1591990232054" duration="1731000" />
-    </task>
-    <task id="LOCAL-00020" summary="Add center panel methods.">
-      <created>1589225632887</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1589225632887</updated>
+      <workItem from="1591990232054" duration="2023000" />
     </task>
     <task id="LOCAL-00021" summary="Add Insomnia GUI.">
       <created>1589225702764</created>
@@ -652,11 +656,18 @@
       <option name="project" value="LOCAL" />
       <updated>1591971282956</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="Fix form data 500 response code.">
+      <created>1591992089964</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1591992089965</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121917000" />
+    <option name="totallyTimeSpent" value="122209000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -728,7 +739,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add upload binary file modified and size data." />
     <MESSAGE value="Fix light mode in message body." />
     <MESSAGE value="Add help menu." />
     <MESSAGE value="Add initBody method." />
@@ -753,7 +763,8 @@
     <MESSAGE value="Fix Json." />
     <MESSAGE value="Fix save and read." />
     <MESSAGE value="Add progress bar for saved requests." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add progress bar for saved requests." />
+    <MESSAGE value="Fix form data 500 response code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix form data 500 response code." />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-13.jdk/Contents/Home/lib/src.zip!/java.desktop/javax/swing/JComponent.java">
@@ -887,18 +898,6 @@
     <entry file="file://$PROJECT_DIR$/Requests/ahmad.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LeftSidePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1920">
-          <caret line="141" column="119" selection-start-line="141" selection-start-column="119" selection-end-line="141" selection-end-column="119" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8994#8995#0" expanded="true" />
-            <element signature="e#9032#9033#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SaveButtonAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1740">
@@ -951,13 +950,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RightSidePanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -997,6 +989,25 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#20801#20802#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="42" column="35" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LeftSidePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="132" column="57" selection-start-line="132" selection-start-column="57" selection-end-line="132" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8994#8995#0" expanded="true" />
+            <element signature="e#9032#9033#0" expanded="true" />
           </folding>
         </state>
       </provider>
