@@ -164,12 +164,12 @@ public class CenterSidePanel extends JPanel {
 
 
         //body type.
-        bodyTypeComboBox = new JComboBox(new String[]{"No Body", "Form Data", "JSON", "Binary Data"});
+        bodyTypeComboBox = new JComboBox(new String[]{"No Body", "Form Data", "JSON", "Form URL Encoded", "Binary Data"});
         bodyTypeComboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if ((bodyTypeComboBox.getSelectedItem()).equals("Binary Data")) {
-                    Controller.json=false;
+                    Controller.json = false;
                     Controller.formData = false;
                     if (bodyPanel.getComponents().length > 1) {
                         for (int i = 1; i < bodyPanel.getComponents().length; i++) {
@@ -198,9 +198,10 @@ public class CenterSidePanel extends JPanel {
                     }
                 }
                 if ((bodyTypeComboBox.getSelectedItem()).equals("Form Data")) {
-                    Controller.json=false;
+                    Controller.json = false;
                     Controller.formData = true;
                     Controller.uploadFile = "";
+                    Controller.urlEncoded = false;
                     if (bodyPanel.getComponents().length > 1) {
                         for (int i = 1; i < bodyPanel.getComponents().length; i++) {
                             bodyPanel.remove(i);
@@ -211,9 +212,10 @@ public class CenterSidePanel extends JPanel {
                     initFormData();
                 }
                 if ((bodyTypeComboBox.getSelectedItem()).equals("No Body")) {
-                    Controller.json=false;
+                    Controller.json = false;
                     Controller.formData = false;
                     Controller.uploadFile = "";
+                    Controller.urlEncoded = false;
                     if (bodyPanel.getComponents().length > 1) {
                         for (int i = 1; i < bodyPanel.getComponents().length; i++) {
                             bodyPanel.remove(i);
@@ -224,9 +226,10 @@ public class CenterSidePanel extends JPanel {
 
                 }
                 if ((bodyTypeComboBox.getSelectedItem()).equals("JSON")) {
-                    Controller.json=true;
+                    Controller.json = true;
                     Controller.formData = false;
                     Controller.uploadFile = "";
+                    Controller.urlEncoded = false;
                     if (bodyPanel.getComponents().length > 1) {
                         for (int i = 1; i < bodyPanel.getComponents().length; i++) {
                             bodyPanel.remove(i);
@@ -244,7 +247,20 @@ public class CenterSidePanel extends JPanel {
                     bodyPanel.repaint();
                     bodyPanel.revalidate();
                 }
-
+                if ((bodyTypeComboBox.getSelectedItem()).equals("Form URL Encoded")) {
+                    Controller.json = false;
+                    Controller.formData = false;
+                    Controller.uploadFile = "";
+                    Controller.urlEncoded = true;
+                    if (bodyPanel.getComponents().length > 1) {
+                        for (int i = 1; i < bodyPanel.getComponents().length; i++) {
+                            bodyPanel.remove(i);
+                            bodyPanel.repaint();
+                            bodyPanel.revalidate();
+                        }
+                    }
+                    initFormData();
+                }
             }
         });
 
@@ -253,7 +269,7 @@ public class CenterSidePanel extends JPanel {
     }
 
     /**
-     * this initFormData method makes the form data body tab.
+     * this initFormData method makes the form data body tab and the url encoded tab.
      */
 
     public void initFormData() {

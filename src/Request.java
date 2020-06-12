@@ -13,6 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * The Request class used to send a HTTP request using HTTPUrlConnection in java.
@@ -166,19 +167,68 @@ public class Request {
      */
     private void setData(HttpURLConnection urlConnection) throws IOException {
         if (!data.equals("")) {
-            byte[] postData = data.getBytes(StandardCharsets.UTF_8);
-            int postDataLength = postData.length;
-            urlConnection.setDoOutput(true);
-            urlConnection.setInstanceFollowRedirects(false);
-            urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-            urlConnection.setRequestProperty("charset", "utf-8");
-            urlConnection.setRequestProperty("Content-Length", Integer.toString(postDataLength));
-            urlConnection.setUseCaches(false);
-            try (DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream())) {
-                wr.write(postData);
+            if (Controller.formData) {
+                try {
+                    HashMap<String, String> fooBody = new HashMap<>();
+                    for (String d : data.split("&")) {
+                        fooBody.put(d.split("=")[0], d.split("=")[1]);
+                    }
+                    String boundary = System.currentTimeMillis() + "";
+                    urlConnection.setDoOutput(true);
+                    urlConnection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
+                    BufferedOutputStream request = new BufferedOutputStream(urlConnection.getOutputStream());
+                    bufferOutFormData(fooBody, boundary, request);
+                } catch (Exception e) {
+                    //ignore.
+                }
+            } else {
+                byte[] postData = data.getBytes(StandardCharsets.UTF_8);
+                int postDataLength = postData.length;
+                urlConnection.setDoOutput(true);
+                urlConnection.setInstanceFollowRedirects(false);
+                urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                urlConnection.setRequestProperty("charset", "utf-8");
+                urlConnection.setRequestProperty("Content-Length", Integer.toString(postDataLength));
+                urlConnection.setUseCaches(false);
+                try (DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream())) {
+                    wr.write(postData);
+
+                }
             }
         }
     }
+
+    /**
+     * set the form data and the boundary for each request.
+     *
+     * @param body                 body message.
+     * @param boundary             boundary.
+     * @param bufferedOutputStream outPutStream to server.
+     * @throws IOException if cannot do the task.
+     */
+    public static void bufferOutFormData(HashMap<String, String> body, String boundary, BufferedOutputStream bufferedOutputStream) throws IOException {
+        for (String key : body.keySet()) {
+            bufferedOutputStream.write(("--" + boundary + "\r\n").getBytes());
+            if (key.contains("file")) {
+                bufferedOutputStream.write(("Content-Disposition: form-data; filename=\"" + (new File(body.get(key))).getName() + "\"\r\nContent-Type: Auto\r\n\r\n").getBytes());
+                try {
+                    BufferedInputStream tempBufferedInputStream = new BufferedInputStream(new FileInputStream(new File(body.get(key))));
+                    byte[] filesBytes = tempBufferedInputStream.readAllBytes();
+                    bufferedOutputStream.write(filesBytes);
+                    bufferedOutputStream.write("\r\n".getBytes());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                bufferedOutputStream.write(("Content-Disposition: form-data; name=\"" + key + "\"\r\n\r\n").getBytes());
+                bufferedOutputStream.write((body.get(key) + "\r\n").getBytes());
+            }
+        }
+        bufferedOutputStream.write(("--" + boundary + "--\r\n").getBytes());
+        bufferedOutputStream.flush();
+        bufferedOutputStream.close();
+    }
+
 
     /**
      * this setJson method sets the data Json type to send a request.

@@ -58,7 +58,7 @@ public class SendButtonAction implements ActionListener {
             sb.deleteCharAt(str.length() - 1);
             argees.add(sb.toString());
         }
-        if (Controller.formData) {
+        if (Controller.formData||Controller.urlEncoded) {
             Component[] bodyNewPanelComponents = Controller.bodyNewPanel.getComponents();
             JCheckBox jCheckBox2 = (JCheckBox) bodyNewPanelComponents[3];
             if (jCheckBox2.isSelected()) {
@@ -113,6 +113,9 @@ public class SendButtonAction implements ActionListener {
             protected Object doInBackground() throws Exception {
                 String[] arr = new String[argees.size()];
                 arr = argees.toArray(arr);
+                for (String str2 : arr) {
+                    System.out.println(str2);
+                }
                 Request request = new Request(arr);
                 request.send();
                 argees.clear();

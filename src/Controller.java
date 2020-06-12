@@ -23,6 +23,7 @@ public class Controller {
     public static JTextArea jsonText;
     public static boolean formData = false;
     public static boolean json = false;
+    public static boolean urlEncoded = false;
 
     //left panel components.
     public static LeftSidePanel leftSidePanel;
