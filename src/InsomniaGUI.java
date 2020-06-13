@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * the InsomniaGUI class which extends JFrame class , matches 3 main parts together and also contains the main frame for the
@@ -238,6 +241,16 @@ public class InsomniaGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (insomniaMenuBar.getHideCheckBox().isSelected()) {
+                    File file = new File("Setting.txt");
+                    try {
+                        //write on the file.
+                        FileWriter fr = new FileWriter(file, true);
+                        fr.write(insomniaMenuBar.getFollowRedirect().isSelected() + "\n");
+                        fr.write(insomniaMenuBar.getHideCheckBox().isSelected() + "\n");
+                        fr.close();
+                    } catch (IOException ee) {
+                        ee.printStackTrace();
+                    }
 
                     if (!hideInSystemTray) {
                         setState(JFrame.ICONIFIED);
@@ -285,8 +298,20 @@ public class InsomniaGUI extends JFrame {
                         }
                         hideInSystemTray = true;
                     } else setState(JFrame.ICONIFIED);
+                } else {
+                    File file = new File("Setting.txt");
+                    try {
+                        //write on the file.
+                        FileWriter fr = new FileWriter(file, true);
+                        fr.write(insomniaMenuBar.getFollowRedirect().isSelected() + "\n");
+                        fr.write(insomniaMenuBar.getHideCheckBox().isSelected() + "\n");
+                        fr.close();
+                    } catch (IOException ee) {
+                        ee.printStackTrace();
+                    }
+                    System.exit(0);
+                }
 
-                } else System.exit(0);
             }
         });
     }

@@ -356,7 +356,9 @@ public class Request {
                     JScrollPane scrollPane = new JScrollPane(responseField);
                     responseField.setBackground(Color.lightGray);
                     responseField.setEditable(false);
-                    Controller.bodyTabbedPane.addTab("Raw", scrollPane);
+                    if (!urlConnection.getHeaderField("Content-Type").toLowerCase().contains("png") && !urlConnection.getHeaderField("Content-Type").toLowerCase().contains("jpg")) {
+                        Controller.bodyTabbedPane.addTab("Raw", scrollPane);
+                    }
 
 
                     Controller.dataSizeStatus.setText(response.length() / 1000 + "." + response.length() % 1000 + " KB");

@@ -3,10 +3,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.Scanner;
 
 /**
  * the InsomniaMenuBar class that extends JMenuBar , is used to make a menu bar for the app that contains
@@ -23,7 +21,7 @@ public class InsomniaMenuBar extends JMenuBar {
     private JMenu menuApplication, applicationSubMenu1, theme, menuView, menuHelp;
 
     //hide checkBox for system tray.
-    private final JCheckBox hideCheckBox,followRedirect;
+    private final JCheckBox hideCheckBox, followRedirect;
 
     //menu items.
     private JMenuItem dark, light, applicationSubMenu2, tFullScreen, tSideBar, about, help;
@@ -33,12 +31,13 @@ public class InsomniaMenuBar extends JMenuBar {
      */
     public InsomniaMenuBar() {
 
+
         //application part.
         menuApplication = new JMenu("Application");
         menuApplication.setMnemonic(KeyEvent.VK_A);
         applicationSubMenu1 = new JMenu("Options");
         followRedirect = new JCheckBox("Follow Redirect ");
-        Controller.followRedirect=followRedirect;
+        Controller.followRedirect = followRedirect;
         applicationSubMenu1.add(followRedirect);
 
         //hide checkBox.
@@ -111,14 +110,14 @@ public class InsomniaMenuBar extends JMenuBar {
                     }
 
                     JFrame jFrame = new JFrame("Help : ");
-                    jFrame.setBounds(300,300,355,255);
+                    jFrame.setBounds(300, 300, 355, 255);
                     jFrame.setLayout(new BorderLayout());
                     jFrame.add(jTextArea);
                     jTextArea.setEditable(false);
                     jFrame.setResizable(false);
                     jTextArea.setBackground(Color.lightGray);
                     JButton jButton = new JButton("Close");
-                    jFrame.add(jButton,BorderLayout.SOUTH);
+                    jFrame.add(jButton, BorderLayout.SOUTH);
                     jFrame.setVisible(true);
                     jButton.addActionListener(new ActionListener() {
                         @Override
@@ -148,66 +147,85 @@ public class InsomniaMenuBar extends JMenuBar {
         add(menuApplication);
         add(menuView);
         add(menuHelp);
-
-
+        try {
+            File file = new File("Setting.txt");
+            Scanner sc = new Scanner(file);
+            while (sc.hasNext()) {
+                if (sc.next().equals("true")) followRedirect.doClick();
+                if (sc.next().equals("true")) hideCheckBox.doClick();
+            }
+            file.delete();
+        } catch (FileNotFoundException ex) {
+            //ignore.
+        }
     }
 
-    /**
-     * get the fullScreen menu item.
-     *
-     * @return fullScreen menu item.
-     */
-    public JMenuItem gettFullScreen() {
-        return tFullScreen;
+        /**
+         * get the fullScreen menu item.
+         *
+         * @return fullScreen menu item.
+         */
+        public JMenuItem gettFullScreen () {
+            return tFullScreen;
+        }
+
+        /**
+         * get the sidebar menu item.
+         *
+         * @return sidebar menu item.
+         */
+
+        public JMenuItem gettSideBar () {
+            return tSideBar;
+        }
+
+        /**
+         * get the ApplicationSubMenu2 menu item.
+         *
+         * @return ApplicationSubMenu2 menu item.
+         */
+
+        public JMenuItem getApplicationSubMenu2 () {
+            return applicationSubMenu2;
+        }
+
+        /**
+         * get the HideCheckBox menu item.
+         *
+         * @return HideCheckBox menu item.
+         */
+
+        public JCheckBox getHideCheckBox () {
+            return hideCheckBox;
+        }
+
+        /**
+         * get the darkMode menu item.
+         *
+         * @return darkMode menu item.
+         */
+
+        public JMenuItem getDark () {
+            return dark;
+        }
+
+        /**
+         * get the lightMode menu item.
+         *
+         * @return lightMode menu item.
+         */
+
+        public JMenuItem getLight () {
+            return light;
+        }
+
+        /**
+         * get the followRedirect menu item.
+         *
+         * @return followRedirect menu item.
+         */
+
+        public JCheckBox getFollowRedirect () {
+            return followRedirect;
+        }
     }
-
-    /**
-     * get the sidebar menu item.
-     *
-     * @return sidebar menu item.
-     */
-
-    public JMenuItem gettSideBar() {
-        return tSideBar;
-    }
-
-    /**
-     * get the ApplicationSubMenu2 menu item.
-     *
-     * @return ApplicationSubMenu2 menu item.
-     */
-
-    public JMenuItem getApplicationSubMenu2() {
-        return applicationSubMenu2;
-    }
-
-    /**
-     * get the HideCheckBox menu item.
-     *
-     * @return HideCheckBox menu item.
-     */
-
-    public JCheckBox getHideCheckBox() {
-        return hideCheckBox;
-    }
-
-    /**
-     * get the darkMode menu item.
-     *
-     * @return darkMode menu item.
-     */
-
-    public JMenuItem getDark() {
-        return dark;
-    }
-
-    /**
-     * get the lightMode menu item.
-     *
-     * @return lightMode menu item.
-     */
-
-    public JMenuItem getLight() {
-        return light;
-    }
-}

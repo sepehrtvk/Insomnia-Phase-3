@@ -27,7 +27,7 @@ public class Controller {
 
     //left panel components.
     public static LeftSidePanel leftSidePanel;
-
+    public static JList list;
 
     //right panel components.
     public static RightSidePanel rightSidePanel;
